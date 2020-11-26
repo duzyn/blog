@@ -227,7 +227,7 @@
 <p>产品的定位是内部 IT 系统和工具，用于辅助产品开发团队根据用户反馈解决应用的性能问题，提高客户满意度。</p>
 <p>产品可以量化反映应用的用户体验，可供相关角色的用户查看，帮助开发人员分析问题，并指导开发团队改进产品。</p>
 <h2 id="目标用户和需求">目标用户和需求</h2>
-<p>产品的目标用户是公司内部的高层、客户成功、运维、产品经理、开发团队。见 <span class="citation" data-cites="tbl:目标用户角色和需求">[@tbl:目标用户角色和需求]</span></p>
+<p>产品的目标用户是公司内部的高层、客户成功、运维、产品经理、开发团队。见</p>
 <table>
 <caption>目标用户角色和需求 {#tbl:目标用户角色和需求}</caption>
 <colgroup>
@@ -271,7 +271,7 @@
 <p>整个流程大致如下：在产品中植入采集SDK → 采集数据到数据仓库 → 清洗数据 → 分析数据 → 用户在 Web 前端查看数据、对比指标、制作报表 → 设置指标告警规则 → 收到告警邮件 → 产品带领开发团队查看、分析问题 → 解决问题 → 发布新版本 → 优化或者新增数据采集 → 采集数据到数据仓库。</p>
 <p>指标制定后，需要在日常工作中执行下去。产品经理可以将关键的指标纳入季度规划，做为关键任务或非关键任务。QA 跟踪检查指标的达成情况，并统计后做为绩效考核的依据。</p>
 <h2 id="设计">设计</h2>
-<p>系统的信息架构见 <span class="citation" data-cites="fig:系统信息架构">[@fig:系统信息架构]</span>：</p>
+<p>系统的信息架构见：</p>
 <figure>
 <img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/系统信息架构.png" id="fig:系统信息架构" alt="系统的信息架构" /><figcaption aria-hidden="true">系统的信息架构</figcaption>
 </figure>
@@ -288,11 +288,11 @@
 <figure>
 <img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/概览.png" id="fig:概览" alt="概览" /><figcaption aria-hidden="true">概览</figcaption>
 </figure>
-<p>在概览页（见<span class="citation" data-cites="fig:概览">[@fig:概览]</span>）的上方显示应用用户指标、应用业务指标、应用性能指标的日/周/月的<em>各应用整体平均值</em>，同时显示日/周/月的同比增降百分比情况，上升使用红色的箭头，下降使用绿色的箭头，这是借鉴股价涨跌的颜色表示方法。点击概览的指标可以跳到<em>第一个</em>应用的具体指标页查看。</p>
+<p>在概览页的上方显示应用用户指标、应用业务指标、应用性能指标的日/周/月的<em>各应用整体平均值</em>，同时显示日/周/月的同比增降百分比情况，上升使用红色的箭头，下降使用绿色的箭头，这是借鉴股价涨跌的颜色表示方法。点击概览的指标可以跳到<em>第一个</em>应用的具体指标页查看。</p>
 <p>在概览页的下方显示各应用的各指标的日/周/月的<em>应用整体平均值</em>，同时显示日/周/月的同比增降百分比情况。点击应用的具体的值，可以跳到该应用的具体指标页查看。</p>
 <p>点击“日/周/月”的切换器可以查看整体和各应用的各指标的情况。</p>
 <h3 id="指标页">指标页</h3>
-<p>一个指标页面的页面结构见 <span class="citation" data-cites="fig:页面结构">[@fig:页面结构]</span>：</p>
+<p>一个指标页面的页面结构见：</p>
 <figure>
 <img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/页面结构.png" id="fig:页面结构" alt="页面结构" /><figcaption aria-hidden="true">页面结构</figcaption>
 </figure>
@@ -302,18 +302,18 @@
 <p>对数据的整体操作体现在工具栏上。工具栏分为左右两侧，左侧为对数据指标进行不同查看方式的处理，包括查看依据、过滤器和导出数据，右侧为指标的按时间显示方式，包括按日/周/月显示和选择起止日期。</p>
 <p>查看依据是指标的不同维度，这些维度都是查看指标的方式，以新增用户为例，维度有渠道、版本、区域、语言、操作系统、硬件等，以登录入会时长为例，维度有版本、企业 ID。</p>
 <p>查看依据：在查看依据中显示的是指标的维度，可以以此聚合数据。聚合后的数据，值从大到小排列，默认在图上显示前 3 个。如下图是以版本查看登录入会时长的数据情况。在下方的表中可以选择更多查看依据的值，勾中一个则在图中显示一条线。</p>
-<p>下例中，<span class="citation" data-cites="fig:崩溃次数指标页">[@fig:崩溃次数指标页]</span> 展示了应用的崩溃次数整体情况，<span class="citation" data-cites="fig:登录入会时长">[@fig:登录入会时长]</span> 展示了以版本为查看依据查看登录入会时长。</p>
+<p>下例中，展示了应用的崩溃次数整体情况，展示了以版本为查看依据查看登录入会时长。</p>
 <figure>
 <img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/崩溃次数.png" id="fig:崩溃次数指标页" alt="崩溃次数" /><figcaption aria-hidden="true">崩溃次数</figcaption>
 </figure>
 <figure>
 <img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/登录入会时长.png" id="fig:登录入会时长" alt="以版本为查看依据查看登录入会时长" /><figcaption aria-hidden="true">以版本为查看依据查看登录入会时长</figcaption>
 </figure>
-<p>过滤器：可以以维度为过滤器来查看图表，点击“添加过滤器”添加一个过滤器，如下图是以一个版本为过滤器。在添加一个过滤器后，还可以添加其他过滤器。见 <span class="citation" data-cites="fig:过滤器">[@fig:过滤器]</span></p>
+<p>过滤器：可以以维度为过滤器来查看图表，点击“添加过滤器”添加一个过滤器，如下图是以一个版本为过滤器。在添加一个过滤器后，还可以添加其他过滤器。见</p>
 <figure>
 <img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/过滤器.png" id="fig:过滤器" alt="以版本为过滤器" /><figcaption aria-hidden="true">以版本为过滤器</figcaption>
 </figure>
-<p>在过滤后显示结果的图表。点击“X”可以移除过滤器。见 <span class="citation" data-cites="fig:过滤器结果">[@fig:过滤器结果]</span></p>
+<p>在过滤后显示结果的图表。点击“X”可以移除过滤器。见</p>
 <figure>
 <img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/过滤器结果.png" id="fig:过滤器结果" alt="过滤版本 3.30 的登录入会时长" /><figcaption aria-hidden="true">过滤版本 3.30 的登录入会时长</figcaption>
 </figure>
@@ -334,7 +334,7 @@
 <li>用户 ID</li>
 <li>企业 ID</li>
 </ul>
-<p>下例中，<span class="citation" data-cites="fig:调用链查询">[@fig:调用链查询]</span> 展示了调用链查询，<span class="citation" data-cites="fig:崩溃查询">[@fig:崩溃查询]</span> 展示了崩溃查询。</p>
+<p>下例中，展示了调用链查询，展示了崩溃查询。</p>
 <figure>
 <img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/调用链查询.png" id="fig:调用链查询" alt="调用链查询" /><figcaption aria-hidden="true">调用链查询</figcaption>
 </figure>
@@ -352,7 +352,7 @@
 <li>IP</li>
 <li>时间轴（耗时）</li>
 </ul>
-<p>下例中，<span class="citation" data-cites="fig:调用链详情">[@fig:调用链详情]</span> 展示了调用链详情，<span class="citation" data-cites="fig:崩溃详情">[@fig:崩溃详情]</span> 展示了崩溃详情。</p>
+<p>下例中，展示了调用链详情，展示了崩溃详情。</p>
 <figure>
 <img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/调用链详情.png" id="fig:调用链详情" alt="调用链详情" /><figcaption aria-hidden="true">调用链详情</figcaption>
 </figure>
@@ -362,11 +362,11 @@
 <p>查看 Span 详情：鼠标悬浮在 Span 名称上可以查看 Span 的详情，字段有：</p>
 <h3 id="告警设置">告警设置</h3>
 <p>以登录入会时长为例，其他指标的基本规则和此指标类似。</p>
-<p>在应用设置中点击“告警设置”，打开告警设置。如 <span class="citation" data-cites="fig:告警设置">[@fig:告警设置]</span></p>
+<p>在应用设置中点击“告警设置”，打开告警设置。如</p>
 <figure>
 <img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/告警设置.png" id="fig:告警设置" alt="告警设置" /><figcaption aria-hidden="true">告警设置</figcaption>
 </figure>
-<p>添加告警规则（见 <span class="citation" data-cites="fig:添加告警规则">[@fig:添加告警规则]</span>）：点击“添加告警规则”，填写告警规则，设定好后系统在触发规则后，<em>实时</em>自动发送<em>邮件</em>给通知对象。</p>
+<p>添加告警规则：点击“添加告警规则”，填写告警规则，设定好后系统在触发规则后，<em>实时</em>自动发送<em>邮件</em>给通知对象。</p>
 <ul>
 <li><p>应用名称</p></li>
 <li><p>告警名称：自己输一个和规则相关的告警名称，不能重复</p></li>
@@ -385,7 +385,7 @@
 <img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/添加告警规则.png" id="fig:添加告警规则" alt="添加告警规则" /><figcaption aria-hidden="true">添加告警规则</figcaption>
 </figure>
 <p>在添加告警规则后，点击“运行”即可开启告警监控。再点击“停止”即可停止告警监控。</p>
-<p>查看告警记录（见 <span class="citation" data-cites="fig:查看告警记录">[@fig:查看告警记录]</span>）：点击“查看告警记录”可以打开查看此告警规则触发告警的记录。字段有：</p>
+<p>查看告警记录：点击“查看告警记录”可以打开查看此告警规则触发告警的记录。字段有：</p>
 <ul>
 <li>发生时间：YYYY-MM-DD HH:MM:SS</li>
 <li>告警内容：触发的值以红色标出</li>
