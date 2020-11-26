@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="David Peng" />
+  <meta name="dcterms.date" content="2016-02-29" />
+  <title>DP – 如何设计产品的更新</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      word-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <link rel="shortcut icon" type="image/png" href="https://cdn.jsdelivr.net/gh/duzyn/img/favicon.png"/>
+  <link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/duzyn/img/apple-touch-icon.png">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-18121046-9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-18121046-9');
+  </script>
+</head>
+<body>
+<div style="text-align:center">
+  <a href="/index.html">
+    <img src="https://cdn.jsdelivr.net/gh/duzyn/img/apple-touch-icon.png" alt="DP" style="height:48px;width:48px;border-radius: 24px;">
+  </a>
+</div>
+<header id="title-block-header">
+<h1 class="title">如何设计产品的更新</h1>
+<p class="author">David Peng</p>
+<p class="date">2016-02-29</p>
+</header>
+<h2 id="需求分析">需求分析</h2>
+<p>用户基于以下几点需求：</p>
+<ol type="1">
+<li>用户认为新版本一般包含新功能，或者修正了以往版本的问题，能增强稳定性和性能，提升用户体验。</li>
+<li>用户可以使用新功能，解决其新的需求。</li>
+<li>用户希望软件能不断完善，尤其是 SaaS 产品的用户，如果产品一直不更新，用户会觉得厂商开发的活跃度较低，对用户不重视，进而影响对厂商的信任。</li>
+</ol>
+<p>对厂商来说，有以下几个原因来提供产品的更新：</p>
+<ol type="1">
+<li>更新是衡量老用户活跃度的一个关键指标，一直更新产品的用户一般是活跃度和忠诚度都较高的用户。</li>
+<li>更新是厂商对用户反馈的新需求的回应，如果能解决用户的问题，提升使用的体验，则能有效促进厂商和用户的良性互动。</li>
+</ol>
+<h2 id="什么情况下用户不想更新">什么情况下用户不想更新？</h2>
+<ol type="1">
+<li>用户觉得现在的版本够好，能满足自己的需求，比如用 Windows XP 和 7 的用户。</li>
+<li>用户觉得新版本比老版本差。这主要是厂商在需求把握、产品设计或产品质量上出了问题。比如用户认为 Windows 8 和 10 不如 7，所以一直不更新。用户觉得迅雷 7 广告太多，使用又卡，而 5 界面清爽，能满足下载的核心需求，所以不更新。用户觉得 iOS 9 不稳定，问题多，所以不更新。</li>
+<li>用户没有更新的合适的条件。比如更新包太大，而用户的网络太差，网速较慢，下载更新需要大量的时间，所以不愿意更新。</li>
+<li>新版本完全为了符合厂商的需求，而不考虑用户的需求。比如在新版中加入广告，而不加入其他的功能。</li>
+</ol>
+<h2 id="设计">设计</h2>
+<p>在设计产品更新时，有以下几点设计需要注意：</p>
+<h3 id="自动检查更新">自动检查更新</h3>
+<p>在应用启动时，能自动检查是否有新版本。因为总会有用户找不到从哪里更新，所以我们要主动帮用户检查更新。</p>
+<h3 id="手动检查更新">手动检查更新</h3>
+<p>除了自动检查之外，我们也要有手动检查的按钮。用户可能会忽略掉自动更新的提示，但是后来又希望更新。比如这样的一个情景：用户要立即对 PPT 进行编辑和修改，这时弹出了更新的提示，用户会马上忽略掉。当他忙完了 PPT 之后，他可能会在空闲的时间更新 PowerPoint 软件，这时就可以使用手动检查更新的功能。</p>
+<h3 id="自动安装更新">自动安装更新</h3>
+<p>对较大的更新，如果处理得当，可以让用户在后台下载更新，并在下次启动后自动安装和使用新版本。不能强行让用户下载更新，而应该让其设置，让用户对自己的电脑有控制权。微软为了让用户升级到新版本 Windows 10，自动下载安装包，导致用户的存储空间不够，或耗费大量的流量费用，这是不对的。</p>
+<p>除了要注意让用户自己打开设置外，还应该考虑地更人性化。比如手机更新应用时，应该在有 Wi-Fi 时更新，而不能使用移动网络，否则可能会耗费用户大量的流量费用。</p>
+<h3 id="增量更新">增量更新</h3>
+<p>如果安装包较大，应该考虑使用增量补丁的更新方式，从而避免让用户每次都下载很大的一个安装包或者数据。比如 Windows、iOS、Ubuntu 等操作系统的更新。</p>
+<h3 id="在线更新">在线更新</h3>
+<p>尽量不要使用离线更新的方式，除非用户有这样的明确的需求。在线更新用户的使用成本更低，而且能保证让用户得到的更新是最新的，在日新月异的软件行业中，快速发布更新是至关重要的。有些情况是可以使用离线更新的，比如用固件安装老版本的系统。</p>
+<h3 id="快速下载更新">快速下载更新</h3>
+<p>想办法让用户能更快地下载更新。可以考虑使用 CDN 分发更新包。或者使用 P2P 技术来提供用户下载的速度。比如 Windows 10 更新时可以使用 P2P 方式。使用 P2P 有用户隐私和安全相关的问题，这里只是举一个加速下载的例子。</p>
+<h3 id="描述清楚更新的内容">描述清楚更新的内容</h3>
+<p>更新的内容应该有以下几种：</p>
+<ul>
+<li>更新的标题</li>
+<li>更新内容（图文更好）</li>
+<li>更新包的大小</li>
+<li>预计下载时间</li>
+</ul>
+<p>让用户能清楚地知道新版本是否值得更新。用户可以在简略的更新中，更加详细地了解更新。这一般是在有很多功能的产品发布更新时用到。可以加一个链接跳转到版本的页面，在这里可以查看新版本完整的更新内容。</p>
+<p>要诚实地写出你的更新内容，不要刻意隐瞒某些可以告知用户的部分。</p>
+<h3 id="让用户分享他的更新">让用户分享他的更新</h3>
+<p>让用户可以方便地分享他的更新。有些更新用户如果觉得很好，他会想要分享给好友。这时我们可以保留一个新功能的页面，用户随时可以在产品中打开这个页面，并分享。</p>
+<h3 id="下载更新时要智能">下载更新时要智能</h3>
+<p>比如支持断点续传，如果用户中断下载或下载失败，可以只下载未下载完成的部分，这样用户不用花费更多的流量。因为有时候运营商是按流量收取用户的数据费，比如手机运营商、某些大学的网络提供商。</p>
+<h3 id="安全验证">安全验证</h3>
+<p>对更新包进行安全验证，防止用户安装经过篡改后的更新，避免对用户造成损失。</p>
+<h3 id="更新失败">更新失败</h3>
+<p>更新失败时，要给用户明确的提示，并告知其如何能解决问题。</p>
+<h3 id="自动帮助">自动帮助</h3>
+<p>要能自动帮用户解决问题，而不是老是打断用户。比如下载完更新后，能马上安装并在下次启动时自动安装更新，而不需要用户手动干预。比如 Atom 编辑器。比如 Windows 的系统更新。</p>
+<h3 id="统计分析">统计分析</h3>
+<p>所有的问题在解决后都要验证是否解决了问题，解决得怎么样，以便后续更加优化。所以要做更新的数据统计，能以数据和图表反映更新的实际情况。另外，要收集用户对更新的反馈。</p>
+<h3 id="广而告之">广而告之</h3>
+<p>更新通知不一定要通过应用本身发布，可以使用各种方式公布，比如网站、微信、微博等社交网络、线下发布会。</p>
+<h3 id="ab-测试">A/B 测试</h3>
+<p>在发布之前做产品的 A/B 测试，可以在以下几个阶段做：</p>
+<ul>
+<li>原型设计。在设计之初做 A/B 测试，防止走到错误的方向上。</li>
+<li>开发完成。在开发测试完成后，做 A/B 测试，给不同的用户用不同的版本，收集数据和反馈，确定一个更优版本。</li>
+</ul>
+<h3 id="灰度发布">灰度发布</h3>
+<p>在完成 A/B 测试后，我们已经明确了给客户用的哪个版本更优。这时，可以向更多的用户发布了。因为我们在做 A/B 测试时，可能使用的样本并不多，不能保证所有的用户都喜欢新版本。所以这时可以用灰度发布的机制，让一部分用户先用新版本，其他用户仍然用老版本。</p>
+<h3 id="更新的注意事项">更新的注意事项</h3>
+<p>如果系统更新时，确保设备通电或有足够的电量，否则如果更新到一半，设备没电了，可能设备会变砖。</p>
+<p>在用户使用移动网络下载较大的更新包时，提示用户会耗费较多流量费用。</p>
+<h2 id="不要这样做">不要这样做</h2>
+<h3 id="强制安装更新">强制安装更新</h3>
+<p>不要强制安装更新，而不通知用户，这样会让用户觉得无法掌握自己的设备。其次，用户的网络很差的话，下载更新会耗费大量的时间，一直在运行的下载进程可能造成用户的电脑比较卡。也可能会耗费掉用户大量的流量费用。比如 微软让 Windows 7 在后台默默下载 Windows 10。</p>
+<p>©2020 David Peng | 采用 <a href="https://pandoc.org/" target="_blank">Pandoc</a> 搭建</p>
+</body>
+</html>

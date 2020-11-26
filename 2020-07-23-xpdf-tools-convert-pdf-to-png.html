@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="David Peng" />
+  <meta name="dcterms.date" content="2020-07-23" />
+  <title>DP – 使用 Xpdf 将 PDF 转为 PNG 图片</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      word-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <link rel="shortcut icon" type="image/png" href="https://cdn.jsdelivr.net/gh/duzyn/img/favicon.png"/>
+  <link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/duzyn/img/apple-touch-icon.png">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-18121046-9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-18121046-9');
+  </script>
+</head>
+<body>
+<div style="text-align:center">
+  <a href="/index.html">
+    <img src="https://cdn.jsdelivr.net/gh/duzyn/img/apple-touch-icon.png" alt="DP" style="height:48px;width:48px;border-radius: 24px;">
+  </a>
+</div>
+<header id="title-block-header">
+<h1 class="title">使用 Xpdf 将 PDF 转为 PNG 图片</h1>
+<p class="author">David Peng</p>
+<p class="date">2020-07-23</p>
+</header>
+<p><a href="https://www.Xpdfreader.com/about.html">Xpdf</a> 是免费开源的 PDF 处理工具，本文介绍使用 pdftopng 将 PDF 转为 PNG 图片。</p>
+<h2 id="下载安装-xpdf">下载安装 Xpdf</h2>
+<p>Xpdf 是命令行工具，有两种安装方式：</p>
+<ol type="1">
+<li>使用 Scoop 安装：<code>scoop install xpdf-tools</code>。推荐使用此方法。</li>
+<li>手动安装：在 <a href="https://www.xpdfreader.com/download.html">Xpdf 下载页面</a> 下载 Windows 32/64 位的版本，下载的文件名为类似 xpdf-tools-win-4.02.zip，解压缩到一个路径下即可，例如解压缩到 C:<br />
+</li>
+</ol>
+<h2 id="配置-xpdf">配置 Xpdf</h2>
+<p>Xpdf 的配置都在 <a href="https://www.xpdfreader.com/xpdfrc-man.html">xpdfrc 文件</a> 中，官网有详细的介绍。</p>
+<p>在上一步下载的压缩包中的 doc 目录下有个 sample-xpdfrc 文件，将此文件复制到 xpdf 可执行文件的路径下（pdftopng.exe 所在的路径下），并复制一份重命名为 xpdfrc，原有的 sample-xpdfrc 文件留做备用。可以发现样例文件中的所有项都是注释掉的。我们找到需要修改的地方，取消注释，并修改配置即可。</p>
+<p>需要做的配置有两项：</p>
+<p>一、配置 Type 1 字体 Symbol 和 Zapf Dingbats。</p>
+<p>在 <a href="https://www.xpdfreader.com/download.html">Xpdf 下载页面</a> 下载 Symbol 和 Zapf Dingbats 字体，下载的文件名为类似 xpdf-t1fonts.tar.gz，使用 7Zip 将文件解压缩到 xpdf 可执行文件的路径下。例如解压到 xpdf-t1fonts 目录下。</p>
+<p>找到设置 Symbol 和 Zapf Dingbats 两行，取消注释，并修改字体文件的路径</p>
+<pre><code># Before
+#fontFile Symbol            /usr/local/share/ghostscript/fonts/s050000l.pfb
+#fontFile ZapfDingbats      /usr/local/share/ghostscript/fonts/d050000l.pfb
+
+# After
+fontFile Symbol             ./xpdf-t1fonts/s050000l.pfb
+fontFile ZapfDingbats       ./xpdf-t1fonts/d050000l.pfb</code></pre>
+<p>二、配置中文语言支持包。</p>
+<p>在 <a href="https://www.xpdfreader.com/download.html">Xpdf 下载页面</a> 下载中文语言支持包，下载的文件名为类似 xpdf-chinese-simplified.tar.gz，使用 7Zip 将文件解压缩到 xpdf 可执行文件的路径下。例如解压到 xpdf-chinese-simplified 目录下。</p>
+<p>将 add-to-xpdfrc 文件中的内容拷贝到 xpdfrc 的最下方，并修改文件的路径。取消 fontFileCC 行的注释，下载 <a href="https://github.com/googlefonts/noto-cjk/raw/master/NotoSansCJKsc-Regular.otf">NotoSansCJKsc-Regular.otf</a> 字体到 xpdf-chinese-simplified 目录下，并修改文件的路径。</p>
+<pre><code># Before
+#----- begin Chinese Simplified support package (2011-sep-02)
+#cidToUnicode  Adobe-GB1     /usr/local/share/xpdf/chinese-simplified/Adobe-GB1.cidToUnicode
+#unicodeMap    ISO-2022-CN   /usr/local/share/xpdf/chinese-simplified/ISO-2022-CN.unicodeMap
+#unicodeMap    EUC-CN        /usr/local/share/xpdf/chinese-simplified/EUC-CN.unicodeMap
+#unicodeMap    GBK           /usr/local/share/xpdf/chinese-simplified/GBK.unicodeMap
+#cMapDir       Adobe-GB1     /usr/local/share/xpdf/chinese-simplified/CMap
+#toUnicodeDir                /usr/local/share/xpdf/chinese-simplified/CMap
+#fontFileCC   Adobe-GB1      /usr/..../NotoSansCJKsc-Regular.otf
+#----- end Chinese Simplified support package
+
+# After
+#----- begin Chinese Simplified support package (2011-sep-02)
+cidToUnicode  Adobe-GB1      ./xpdf-chinese-simplified/Adobe-GB1.cidToUnicode
+unicodeMap    ISO-2022-CN    ./xpdf-chinese-simplified/ISO-2022-CN.unicodeMap
+unicodeMap    EUC-CN         ./xpdf-chinese-simplified/EUC-CN.unicodeMap
+unicodeMap    GBK            ./xpdf-chinese-simplified/GBK.unicodeMap
+cMapDir       Adobe-GB1      ./xpdf-chinese-simplified/CMap
+toUnicodeDir                 ./xpdf-chinese-simplified/CMap
+fontFileCC    Adobe-GB1      ./xpdf-chinese-simplified/NotoSansCJKsc-Regular.otf
+#----- end Chinese Simplified support package</code></pre>
+<p>完整的 xpdfrc 文件可查看 <a href="https://cdn.jsdelivr.net/gh/duzyn/img/xpdfrc">xpdfrc</a>。</p>
+<h2 id="使用-pdftopng-将-pdf-转换为-png">使用 pdftopng 将 PDF 转换为 PNG</h2>
+<p>pdftopng 的 <a href="https://www.xpdfreader.com/pdftopng-man.html">官网手册</a> 对使用有详细的介绍。基本的使用方法是</p>
+<pre><code>pdftopng example.pdf example</code></pre>
+<p>假如 example.pdf 文档有两页，则会将其转换为 example-000001.png 和 example-000002.png 两个图片，分别是 PDF 文件的两页。</p>
+<p>©2020 David Peng | 采用 <a href="https://pandoc.org/" target="_blank">Pandoc</a> 搭建</p>
+</body>
+</html>

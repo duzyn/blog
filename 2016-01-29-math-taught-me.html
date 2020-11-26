@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="David Peng" />
+  <meta name="dcterms.date" content="2016-01-29" />
+  <title>DP – 解——那些年数学教给我的</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      word-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <link rel="shortcut icon" type="image/png" href="https://cdn.jsdelivr.net/gh/duzyn/img/favicon.png"/>
+  <link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/duzyn/img/apple-touch-icon.png">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-18121046-9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-18121046-9');
+  </script>
+</head>
+<body>
+<div style="text-align:center">
+  <a href="/index.html">
+    <img src="https://cdn.jsdelivr.net/gh/duzyn/img/apple-touch-icon.png" alt="DP" style="height:48px;width:48px;border-radius: 24px;">
+  </a>
+</div>
+<header id="title-block-header">
+<h1 class="title">解——那些年数学教给我的</h1>
+<p class="author">David Peng</p>
+<p class="date">2016-01-29</p>
+</header>
+<h2 id="不是所有问题都有解">不是所有问题都有解</h2>
+<p>大部分方程没有解的。只有少部分精心设置的方程才有解。</p>
+<p>有时，我们就是不能解决一些问题，因为他本身就是无解的。比如生老病死。</p>
+<h2 id="大部分问题都有解">大部分问题都有解</h2>
+<p>数值逼近可以求出大部分问题的近似解。</p>
+<p>看上去和上一条矛盾，但其实不是。无解的问题并不是无法去解决。有时我们获得近似的解决方案也是很好的。</p>
+<h2 id="有的问题有最优解">有的问题有最优解</h2>
+<p>运筹学教给我有时候，问题有多个解，有一个或多个最优解。</p>
+<p>生活中很多事都可以有不同的解决方法，我们要不断地追求最好的解决方法。</p>
+<h2 id="不论能不能解都要写个解">不论能不能解都要写个解</h2>
+<p>大学老师说：“只要写了解，都能得一分。”</p>
+<p>写个解，至少表示你当初尝试解过。</p>
+<h2 id="实在不会解时不要推脱">实在不会解时不要推脱</h2>
+<p>有些同学会在不会解的题后面写老师的好话。</p>
+<p>不要在不会解的地方写无关的东西。坦然面对，是一种风度。</p>
+<h2 id="多做题才能更好更快地解题">多做题才能更好更快地解题</h2>
+<p>吉米多维奇题集是每一个数学系的学生的记忆。</p>
+<p>熟能生巧。解越多的题你的经验就越足。见识过越多的问题，就越能淡定地面对下一个问题。</p>
+<h2 id="多思考才能拓宽解题的思路">多思考才能拓宽解题的思路</h2>
+<p>高中的 45 套模拟，54 套真题，题目千变万化，其中的知识却是不变的。只有思考才能理解数学的真谛。</p>
+<p>学而不思则罔，思而不学则殆。多思才能拓宽思维的深度。</p>
+<h2 id="你不会解不代表别人不会">你不会解不代表别人不会</h2>
+<p>高中时看高等数学的书籍很多不懂，但同桌已能玩转。</p>
+<p>有些问题自己的知识解决不了，总有会解的人，可以寻求他们的帮助。有时候只是你现在不会解，回去再学学，也许就会了。</p>
+<h2 id="不会解也不要作弊">不会解也不要作弊</h2>
+<p>要坚信诚信是做人的道德底线。</p>
+<h2 id="解自己所有会解的题">解自己所有会解的题</h2>
+<p>在考试时，会做的题一定要争取全部做完。</p>
+<p>有时候就是要承担起责任，如果会做，就要勇敢站出来。</p>
+<h2 id="时间有限时解耗时最短分值最高的题">时间有限时，解耗时最短、分值最高的题</h2>
+<p>在考试时，哪些题又容易分值又高，一定要优先解决。</p>
+<p>这就是用最优解的方法解如何解题的问题。有时候资源、时间等都是有限的，必须要快速做出取舍。</p>
+<h2 id="假设再求证">假设，再求证</h2>
+<p>数学有很多假设命题。</p>
+<p>有时，一筹莫展时要尝试假设，然后去验证它，这也是解决问题的能力。</p>
+<h2 id="定理和公式">定理和公式</h2>
+<p>运用数学的定理和公式，可以让你解题又快又对。</p>
+<p>要不断总结经验，得出自己的定理和公式，不造重复的轮子，不做重复的经验，只有这样才能进步越来越快。</p>
+<p>©2020 David Peng | 采用 <a href="https://pandoc.org/" target="_blank">Pandoc</a> 搭建</p>
+</body>
+</html>

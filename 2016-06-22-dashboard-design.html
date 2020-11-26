@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="David Peng" />
+  <meta name="dcterms.date" content="2016-06-22" />
+  <title>DP – 管理后台设计</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      word-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <link rel="shortcut icon" type="image/png" href="https://cdn.jsdelivr.net/gh/duzyn/img/favicon.png"/>
+  <link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/duzyn/img/apple-touch-icon.png">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-18121046-9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-18121046-9');
+  </script>
+</head>
+<body>
+<div style="text-align:center">
+  <a href="/index.html">
+    <img src="https://cdn.jsdelivr.net/gh/duzyn/img/apple-touch-icon.png" alt="DP" style="height:48px;width:48px;border-radius: 24px;">
+  </a>
+</div>
+<header id="title-block-header">
+<h1 class="title">管理后台设计</h1>
+<p class="author">David Peng</p>
+<p class="date">2016-06-22</p>
+</header>
+<p>​在设置后台时，应关注以下五个方面。</p>
+<h2 id="整体页面设计">整体页面设计</h2>
+<p>页面一般分为三个部分，从上到下分别为导航栏、内容、页脚。导航栏一般包含主要的导航，即一级导航，还有其他元素，包括网站的Logo、通知、个人信息。内容一般分为左右两个部分，左边的为次要的导航，右边的为页面的主要内容。页脚则包含版权信息、帮助、版本号等不太重要的信息。</p>
+<h2 id="业务流程">业务流程</h2>
+<p>后台设计时最主要的是业务流程。这里的业务流程不只是指应用的业务流程，也包含企业内部的业务流程。在设计之前，要先画出清晰的业务流程。</p>
+<h2 id="用户角色和权限">用户角色和权限</h2>
+<p>后台中一般都有跨部门的流程，其中会涉及到很多角色。每一个角色的功能都不一样，所以要为每个角色设置不同的功能，这个可以使用用例图买清楚的表述。主要是一般分两种：系统管理员和业务角色。系统管理员负责维护系统的设置和管理，业务角色则是业务流程中的角色。业务角色一般都会有映射现实中的权限，比如部门经理和普通销售。在权限的设置中最好是精确到每一个人的权限，这样会更灵活。</p>
+<h2 id="数据表">数据表</h2>
+<p>后台中一般有很多表，这些表统计了后台中的各种业务。表一般分为两块 ，一是表格，二是筛选或叫搜索。表格可以帮我换一个对象的所有字段，为了更加灵活，可以让使用者自定义要显示的列和列的顺序。使用者也可以依据所有的字段来进行筛选。一个流程的一环一般包括流程的两个节点和节点之间的动作以及输出的输出物。比如销售上申请购买电脑，他需要填一张采购申请表，采购在同意后会说出同意的字样。销售和采购这是流程的两个节点，采购申请表这是输出，采购这是流程的动作。这个流程涉及到的字段有采购和销售的信息，采购申请表的各个字段，申请被处理的时间处理的处理意见。</p>
+<h2 id="数据图">数据图</h2>
+<p>依据表格中的数据我们可以画出数据图。就像在Excel一样。数据图一般包括数据图的标题、横坐标、纵坐标、图例、坐标刻度、图。图则有柱状图、折线图、扇形图但多种表现方式。在大多数情况下，图都是单轴图。在部分情况下，我们可能会用到双轴图，即有一个x轴，有两个y轴，代表两个不同的指标。横坐标一般是日期或时间，也就是说，在查看一个报表时，我们都需要指定一段时间，然后以各种字段作为筛选条件进行数据的筛选。日期范围可以是天、周、月、季、年或自定义的日期范围。</p>
+<h2 id="数据流">数据流</h2>
+<p>后台设计中最主要的就是数据流，数据流是业务流的体现。</p>
+<p>后台设计时对数据的操作一般包括增加、删除、修改、搜索、刷新、翻页、显示、排序。要考虑数据为空或数据非常大的情况，搜索要有历史记录，以及各种数据操作的异常情况，比如操作动作的冲突等。</p>
+<p>©2020 David Peng | 采用 <a href="https://pandoc.org/" target="_blank">Pandoc</a> 搭建</p>
+</body>
+</html>

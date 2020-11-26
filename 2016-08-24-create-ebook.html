@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="David Peng" />
+  <meta name="dcterms.date" content="2016-08-24" />
+  <title>DP – 制作电子书</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      word-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <link rel="shortcut icon" type="image/png" href="https://cdn.jsdelivr.net/gh/duzyn/img/favicon.png"/>
+  <link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/duzyn/img/apple-touch-icon.png">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-18121046-9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-18121046-9');
+  </script>
+</head>
+<body>
+<div style="text-align:center">
+  <a href="/index.html">
+    <img src="https://cdn.jsdelivr.net/gh/duzyn/img/apple-touch-icon.png" alt="DP" style="height:48px;width:48px;border-radius: 24px;">
+  </a>
+</div>
+<header id="title-block-header">
+<h1 class="title">制作电子书</h1>
+<p class="author">David Peng</p>
+<p class="date">2016-08-24</p>
+</header>
+<h2 id="pandoc-转换电子书">Pandoc 转换电子书</h2>
+<p>Pandoc 转换电子书的命令：</p>
+<pre><code>pandoc FILE -o FILE.epub \
+    -f markdown+east_asian_line_breaks \
+    -t epub \
+    --template=ebook.html \
+    --toc --toc-depth=2 \
+    --epub-stylesheet=ebook.css \
+    --epub-cover-image=cover.jpg</code></pre>
+<h2 id="排版格式">排版格式</h2>
+<p>封面：以 JPEG 或 PNG 格式，大小为 1600x2560，350 PPI。这样的封面在 PPI 较大的设备上也能清晰显示。图片大小不应大于 5M。</p>
+<p>字体：不要使用自定义的中文字体，使用阅读器自带的字体就好。中文字体一般很大，不适合嵌入电子书。英文字体较小，则可以考虑嵌入，以创造更好的阅读体验。</p>
+<p>行距：不要自定义行距。阅读器可以设置全局行距，用户可以根据自己的偏好调节。</p>
+<p>字体大小：不要自定义字体大小。阅读器可以设置字体大小。</p>
+<p>背景色、前景色：不要自定义。阅读器来控制就好。</p>
+<p>间距：不要设置 <code>body</code> 的外间距。阅读器来控制就好。</p>
+<p>段落间距：段后间距一行或不留。</p>
+<p>首行缩进：中文段落首行缩进两字，用中文空格表示。英文段落缩进用 <code>text-indent:2</code></p>
+<p>目录：应同时包含逻辑目录和 HTML 目录。逻辑目录用于阅读器的导航，HTML 目录用于在电子书的开头。使用 Pandoc 的 <code>--toc</code> 选项可以生成 HTML 目录。目录应在书首而不是书尾。</p>
+<h2 id="元数据">元数据</h2>
+<p>电子书的元数据一般有以下几个：</p>
+<ul>
+<li>标题：title，电子书的标题。</li>
+<li>副标题：subtitle，电子书的副标题。</li>
+<li>作者：author，书籍作者。</li>
+<li>创建者：creator，电子书创建者。</li>
+<li>出版者：publisher，电子书的出版者。</li>
+<li>版权：rights，电子书的版权。</li>
+</ul>
+<p>校验电子书：使用 EpubCheck 来校验 EPUB 电子书。</p>
+<p>使用默认的正文字体、字体大小、行距、字体颜色、背景色等，因为自定义的正文字体会覆盖阅读器的设置。</p>
+<p>使用 CSS <code>page-break-before</code> 和 <code>page-break-after</code> 来断页。例如：</p>
+<pre><code>h1 {
+  page-break-after: always;
+}</code></pre>
+<p>使用 <code>text-indent</code> 来首行缩进。例如：</p>
+<pre><code>p {
+  text-indent: 2em;
+  margin: 1em 0;
+}</code></pre>
+<p>不要使用绝对单位，比如点或像素，而应使用相对单位，比如 % 或 em。行距要大于 1.2 或 120%。</p>
+<p>字体应在 <code>body</code> 级别设置。</p>
+<p>图片：300 PPI，GIF、BMP、JPEG、PNG、SVG 格式，RGB 色。最大 5 MB。照片用 JPEG 格式。矢量图片或文字图片用 GIF 或 PNG 格式，最大 127 KB。</p>
+<p>©2020 David Peng | 采用 <a href="https://pandoc.org/" target="_blank">Pandoc</a> 搭建</p>
+</body>
+</html>

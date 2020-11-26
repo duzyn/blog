@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="David Peng" />
+  <meta name="dcterms.date" content="2016-02-17" />
+  <title>DP – 产品设计中的 UI 组件</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      word-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <link rel="shortcut icon" type="image/png" href="https://cdn.jsdelivr.net/gh/duzyn/img/favicon.png"/>
+  <link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/duzyn/img/apple-touch-icon.png">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-18121046-9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-18121046-9');
+  </script>
+</head>
+<body>
+<div style="text-align:center">
+  <a href="/index.html">
+    <img src="https://cdn.jsdelivr.net/gh/duzyn/img/apple-touch-icon.png" alt="DP" style="height:48px;width:48px;border-radius: 24px;">
+  </a>
+</div>
+<header id="title-block-header">
+<h1 class="title">产品设计中的 UI 组件</h1>
+<p class="author">David Peng</p>
+<p class="date">2016-02-17</p>
+</header>
+<h2 id="组件">组件</h2>
+<p>组件要符合各系统的设计风格。不应将一个系统的风格强行加在另一个系统上。比如 Google 在 iOS 上的应用，也用的是 Material Design 的风格，和 iOS 系统风格格格不入，这是典型的反面教材。应该学习 Facebook 的应用 Facebook、Messenger、WhatsApp 等，其在不同平台的应用各有不同，毫无违和感。</p>
+<p>我们将组件分为 3 类：桌面、移动和电视。桌面的包括 Windows、Mac，操作方式是用键盘和鼠标，用户距离屏幕较近；移动的包括 Android 和 iOS，操作方式是用手指触摸，用户距离屏幕较近；电视的包括智能电视、硬件终端，操作方式使用带键盘的遥控器，用户距离屏幕很远。不同的操作方式和离屏幕的远近，导致在使用组件时要有不同的考虑。下文将先将共性的地方，再讲各平台差异的地方。</p>
+<p>TV、桌面和移动的使用场景有很大的区别。</p>
+<h3 id="按钮">按钮</h3>
+<p>按钮要体现出按钮的特性。现实中，按钮一般是突起的，按下去之后状态会改变。在做设计时要反映出按钮的这些隐喻。</p>
+<p>多个按钮（2-3 个）在一起时要注意排列，要有主次之分，主要的按钮可以在颜色、大小、对比度等方面突出，次要按钮则应该弱化。这样可以引导用户做出设计师预想的操作。</p>
+<p>按钮个数超过 3 个时，应考虑使用按钮列表。</p>
+<p>桌面：按钮较小，用户主要靠鼠标操作，熟练的用户会用键盘Tab键导航后按 Enter。在只有一个按钮时，应该支持按 Enter 即是点击按钮。</p>
+<p>移动：主要按钮要明显区分于次要按钮。</p>
+<p>电视：按钮在选中时应该比未选中时更大，感觉看上去离用户更近。</p>
+<p>按钮为用户提供触发即时操作的方法。</p>
+<p>按钮的状态有以下几种：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">状态</th>
+<th style="text-align: left;">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">普通</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">鼠标悬浮</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">聚焦</td>
+<td style="text-align: left;">一般是Tab键切换到按钮上</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">按下</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">不可用</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<p>确保用户清楚地了解按钮的目的和状态。使用简洁具体而又明白易懂的文本来清楚地描述按钮可以执行的操作。通常，按钮文本内容是一个字词（动）</p>
+<p>如果操作是导航到另一个页面时，不用使用按钮，而应使用链接。对于向导导航，应使用“上一步”和“下一步”的按钮。返回到上一页面使用返回。</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">系统</th>
+<th style="text-align: left;">位置</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Windows</td>
+<td style="text-align: left;">确定在左，取消在右</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mac OS X</td>
+<td style="text-align: left;">确定在右，取消在左</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">iOS</td>
+<td style="text-align: left;">同 OS X</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Android</td>
+<td style="text-align: left;">同 Windows</td>
+</tr>
+</tbody>
+</table>
+<p>按钮应尽量仅使用图标或文字，也可以同时使用图标和文字。如果使用文字，则在考虑本地化时，应能动态调整按钮的宽度和高度，避免出现文字显示不全的问题。</p>
+<p>一次仅向用户显示最多 3 个按钮，最好是 2 个，例如“接受”和“拒绝”，“保存”和“取消”。如果需要用户进行的操作选项很多，可以考虑使用下拉框。</p>
+<p>一般点击按钮会立即进行用户选择的操作，比如点击“复制”按钮，会马上复制选中的文字。当点击按钮不是直接操作而是有另一个窗口处理式，需要在按钮后面加“…”，注意，这不是三个点，而是一个字符。Unicode 编码为 U+02026。比如下方 Word 选项中的“自定义词典(<u>C</u>)…”。</p>
+<h3 id="按钮列表">按钮列表</h3>
+<p>按钮较多时要对按钮进行更好地区分，不能再一味地顺序排列，可以使用分组、间隔线、图标等方式来区分。</p>
+<p>Word 的按钮就很好地利用图标、颜色、分隔线根据功能进行了排列和分组。</p>
+<h3 id="浮动按钮android">浮动按钮（Android）</h3>
+<p>Google 在 Material Design 中提出的概念，将一个按钮特写的突出，使之感觉位于所有其他元素的上方，吸引用户的注意。用做最主要的操作时。</p>
+<h3 id="卡片">卡片</h3>
+<p>卡片是一种组织信息集合的一种方式。将信息集合中的每条信息按一定的排列规则，排布。各个集合不一定要都是一样的信息，可以自由组合。布局可以较为灵活，可以很多地支持响应式的设计，在视觉上也很容易区分信息。</p>
+<p>卡片一直都有，但是由 Google 总结于 Material Design 中的，现在 Web 设计、各客户端设计使用卡片是很常见的。</p>
+<h3 id="表格">表格</h3>
+<p>表格是用于展示数据集的很好的方式，每一行即时一个数据集的条目。表格的设计应该遵循传统的表格规范。包括以下几点：</p>
+<ul>
+<li>数字应靠右对齐，大于 1000 的数字应按每千位逗号分开</li>
+<li>标题、文字一般靠左对齐</li>
+<li>表格可以按某列顺序或逆序排列</li>
+<li>可以按某列的值筛选</li>
+<li>可以对行进行操作</li>
+</ul>
+<p>表中也可以组合使用各种组件。</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">水果</th>
+<th style="text-align: right;">单价（元）</th>
+<th style="text-align: right;">数量（个）</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">苹果</td>
+<td style="text-align: right;">18.00</td>
+<td style="text-align: right;">13,123</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">香蕉</td>
+<td style="text-align: right;">8.95</td>
+<td style="text-align: right;">3,144,124</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">梨子</td>
+<td style="text-align: right;">5.99</td>
+<td style="text-align: right;">41,241,241</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">菠萝</td>
+<td style="text-align: right;">17.99</td>
+<td style="text-align: right;">731,123,313</td>
+</tr>
+</tbody>
+</table>
+<h3 id="对话框">对话框</h3>
+<p>对话框是打断用户的操作，需要用户对重要信息进行确认时，弹出的窗口。用户必须对对话框做出操作，才能进行下一步。用户在操作对话框时，不能操作对话框下的内容。</p>
+<p>在以下情形时，使用对话框：</p>
+<ul>
+<li>用户删除重要信息，而系统不提供撤销功能时。</li>
+<li>应用运行需要用户授予权限时，比如应用要访问麦克风、摄像头才能使用视频会议。</li>
+<li>移动：从一个应用跳到另一个应用时。</li>
+</ul>
+<p>消息对话框是一个覆盖式 UI 元素，提供了一个稳定的上下文表面，它始终是一种模式并可以明确取消。消息对话框显示在屏幕上的一致位置。</p>
+<p>应用于整个应用上下文的错误消息使用消息对话框。这样的消息对话框不同于可以在内联模式下传达的错误消息。一个较为合理的示例是显示连接错误的消息对话框；这会严重影响用户可以从应用获取的价值：</p>
+<p>使用消息对话框传达紧急信息，用户必须查看和确认此信息才能继续操作。“你的高级功能的试用期已过期。”就是此类消息对话框的示例。</p>
+<p>使用消息对话框可以显示要求用户进行输入的阻止问题。阻止问题是指应用不能代表用户进行选择而且不能继续替用户履行它的价值提议的问题。阻止问题应当为用户提供清楚的选项。它不是可以忽略或延迟的问题。</p>
+<p>使用消息对话框可以请求用户执行明确的操作，或者提供对用户非常重要的信息以便他们确认。对话框用法示例如下：</p>
+<ul>
+<li>用户准备永久改变宝贵资产</li>
+<li>用户准备删除宝贵资产</li>
+<li>用户系统的安全性可能受到威胁</li>
+</ul>
+<p>各平台的对话框，一般是位于应用（或屏幕）的中央，macOS 除外，其从工具栏或标题栏的下边缘划下。</p>
+<h3 id="分隔线">分隔线</h3>
+<p>用于分隔开内容，使得信息更加易于用户理解。过多的分隔线会造成视觉干扰，只在必要的时候使用。</p>
+<p>分隔线应该淡化，不能喧宾夺主，比主要内容还要显眼。</p>
+<h3 id="网格">网格</h3>
+<p>网格用于展示大量类型相同的数据，尤其适用于图片、视频等。</p>
+<h3 id="列表">列表</h3>
+<p>列表用于展示大量类型相同的数据或数据集合，列表比网格有更强大的适用性，能用于文字、图片、视频、图文组合更各种场景。</p>
+<p>使用列表或网格视图控件为用户将数据集合表示为一系列项目。 例如，你可以使用列表视图表示电子邮件列表、购物车中的商品、图像列表以及搜索结果。</p>
+<p>列表：列表布局显示为单列，阅读顺序为从上到下，并可以垂直平移或滚动。此布局不显示组信息，如组标头或组边界。</p>
+<p>网格：网格布局始终水平移动，项目按照从上到下再从左到右的阅读顺序进行布置。</p>
+<p>常见的列表或网格视图有以下几种:</p>
+<ul>
+<li><p>内容库模式：在显示内容集合或内容库时，应当使用此模式。 在呈现媒体（如图片和视频）时，通常使用此模式。</p></li>
+<li><p>大纲/细节模式（又称为拆分视图模式）：使用大纲/细节模式时，你可以使用列表视图组织大纲窗格。大纲窗格显示可选项目的列表。当用户在大纲窗格中选择某个项目时，所选项目的其他信息会显示在细节窗格中。列表视图仅可用于设置大纲窗格的显示格式；请为细节窗格使用另一个控件。</p></li>
+<li><p>选取器模式：当主要的用户操作是选择而且能否在点击时激活项目并不重要时，应使用选取器模式。在该交互模式中，点击除了用于横向滑动外，还用于进行选择。</p></li>
+<li><p>静态模式：当你希望仅将列表视图用于呈现内容，而且大多数类型的交互功能处于禁用状态时，应使用此模式。 对于只读的而且不能激活或导航到其中的项目集合，此模式非常有用。</p></li>
+</ul>
+<h3 id="列表控制">列表控制</h3>
+<h3 id="菜单">菜单</h3>
+<p>菜单允许用户从一些选项中选择一个操作。菜单是临时的，只有选中时才会出现，好处是可以节省界面。菜单不应作为主要的导航方式。</p>
+<h3 id="日期选择器">日期选择器</h3>
+<p>日期选择器允许用户从日历中选择一个日期。</p>
+<p>日期选取器提供了一种标准化途径，用户可以通过触控、鼠标或键盘输入选择本地化格式的日期。 当用户需要选择单一日期时，应使用日期选取器。日期选取器是节省空间的理想选项，因为使用的屏幕空间是固定的，并独立于选择的数量。</p>
+<p>最好让用户既可以使用日期选取器，也可以手动输入日期，但是让用户只能输入指定格式的日期，否则输入是无效的。</p>
+<p>不要将年份范围设置为大于 200 年。 而是通过使用最小年份和最大年份属性定义一个有用的年份范围。</p>
+<p>对于选择日期范围，请不要使用日期选取器。可以对开始日期和结束日期分别使用日期选取器。也可以自定义一个日期范围选取器。</p>
+<p>Google Analytics 的日期范围选择器。</p>
+<p>在有些情况下默认为用户选择一个日期是恰当的。</p>
+<p>Android 的日期选择器。</p>
+<p>iOS 将日期选择器和时间选择器融为一个组件。</p>
+<h3 id="时间选择器">时间选择器</h3>
+<p>时间选择器允许用户从日历中选择一个时间。</p>
+<p>Android 的时间选择器</p>
+<p>在 Outlook 中，可以快速选择一个时间，或手动输入。</p>
+<h3 id="进度条">进度条</h3>
+<h4 id="条形进度条">条形进度条</h4>
+<p>当前正在进行活动，可以明确地知道进度和预计结束时间。比如下载一个文件时。</p>
+<h4 id="扇形进度条">扇形进度条</h4>
+<p>当前正在进行活动，可以明确地知道进度和预计结束时间。比如下载一个文件时。扇形比条形节省空间，适用于圆形或方形的组件上面。</p>
+<h4 id="环形进度条">环形进度条</h4>
+<p>和扇形进度条一样。</p>
+<h4 id="活动进度条">活动进度条</h4>
+<p>当前正在进行活动，具体完成时间无法确定。</p>
+<h4 id="混合进度条">混合进度条</h4>
+<p>开始时，具体完成时间无法确定，在完成了某个操作后具体时间可以知道。比如更新功能，先是客户端从服务器查询是否有更新，这是一个活动进度条，当查询到有更新比下载更新时，这是一个条形进度条。</p>
+<p>进度控件将为用户提供关于正在处理运行时间较长的操作的反馈。确定进度栏可显示操作已完成部分的百分比。不确定进度栏（或进度环）可显示正在进行操作。</p>
+<p>使用确定进度条。对于执行时间超过 10 秒的任务，请提供取消该任务的方法。</p>
+<p>如果是这样，请不要使用进度条。进度条是用于显示电脑进度的，不用于显示用户进度。</p>
+<p>当应用执行的任务不必始终可见，但仍然需要显示状态时，请使用文本和省略号。</p>
+<p>如果是这样，请不要显示进度控件。 例如，在显示从磁盘加载的图像时，图像在加载时逐个显示在屏幕上。显示进度控件可能只会导致 UI 混乱，毫无益处。这种情况下图片的逐渐显示就已经表明了进度。</p>
+<p>如果需要一定的时间（或操作）才能开始提供确定进度，请首先使用不确定进度栏，然后切换到确定进度栏。例如，如果下载任务的第一步是连接到服务器，则无法估计需要多长时间。在建立连接后，切换到确定进度条以显示下载进度。在切换后，将进度条完全保持在同一个位置并显示相同的尺寸。</p>
+<p>不要让进度递减。 始终使进度值递增。 如果需要反转某个操作，请显示反向进度，正如你显示任何其他操作的进度。</p>
+<p>如果操作属于模式操作（阻止用户交互），并且所需时间长于 10 秒，请提供取消该操作的方式。在操作开始时，应该提供用于取消的选项。</p>
+<p>空间进度均匀更新。 避免出现进度前进到 80% 以上后停止很长时间的情况。你需要加速进度走向结束，而不是放慢速度。避免剧烈跳动，例如从 0% 到 90%。</p>
+<p>进度达到 100% 后，等待确定进度条完成动画，然后再隐藏进度条。</p>
+<p>不要重新开始计算进度（从 100% 到 0%），除非用户可明显看出当前步骤或任务不是最后一个。例如，假定任务具有两个部分：下载一些数据，然后处理和显示数据。在下载完成后，将进度栏重置为 0%，然后开始显示数据处理进度。 如果用户不清楚任务中有多个步骤，请将这些任务折叠到单个 0-100% 范围内，并在从一个任务前进到下一个任务时更新状态文本。</p>
+<p>在显示进度的时候不要显示百分比，进度已经提供了该信息。</p>
+<p>注意：</p>
+<p>如果一个任务中有多个任务，只显示一个总体进度条。</p>
+<p>好的进度条应越来越快，而不是在前5秒完成了50%的进度，在接下来的3分钟完成另外50%的进度。</p>
+<h3 id="单选按钮">单选按钮</h3>
+<p>单选按钮允许用户从两个或多个选项中选择一个选项。每个选项都表示为一个单选按钮；用户只能选择单选按钮组中的一个单选按钮。单选按钮根据收音机上的频道预设按钮命名。</p>
+<p>单选按钮的状态：</p>
+<ul>
+<li>未选中</li>
+<li>未选中聚焦</li>
+<li>未选中鼠标悬浮</li>
+<li>未选中按下</li>
+<li>未选中不可用</li>
+<li>选中</li>
+<li>选中聚焦</li>
+<li>选中鼠标悬浮</li>
+<li>选中按下</li>
+<li>选中不可用</li>
+</ul>
+<p>使用单选按钮可向用户显示两个或多个相互排斥的选项。</p>
+<p>单选按钮平等地强调所有选项，这可以引起对这些选项的更多关注。请考虑使用其他控件，除非这些选项应该引起用户的额外关注。例如， 如果在大部分情况下为大多数用户推荐默认选项，请改用下拉菜单。</p>
+<p>如果仅有两个相互排斥的选项，请将其合并到单个复选框或切换开关。例如，使用复选框“我同意”而不是两个单选按钮“我同意”和“我不同意”。</p>
+<h3 id="开关">开关</h3>
+<h3 id="地图">地图</h3>
+<p>地图控件可以显示道路地图和鸟瞰图、路线、搜索结果和交通情况。</p>
+<p>请使用充足的屏幕空间或整个屏幕控件（理想情况）来显示地图，以使用户不必进行大量平移和缩放操作即可查看地理信息；如果该控件仅用于呈现静态的信息视图，则可以使用较小地图。</p>
+<p>在你的应用中使用地图，使用户无需离开该应用，即可查看特定于应用的或通用的地理信息。在地图上，你可以显示用户所在位置、路线和感兴趣的地点。地图还可显示鸟瞰图、交通情况以及本地搜索结果。</p>
+<h3 id="超链接">超链接</h3>
+<p>超链接可采用内联文本或超链接按钮的形式。在这两种形式中，超链接是文本的一部分，用户可点击以在浏览器中打开一个网页，或者可以导航到当前应用的另一页（或到同一页的另一个部分）。</p>
+<p>超链接状态包括：</p>
+<ul>
+<li>正常</li>
+<li>已按</li>
+<li>已禁用</li>
+</ul>
+<p>在文本中使用的超链接可以在浏览器中打开网页，用户希望区分哪些链接访问过。这时应该给已访问的链接设置不同的样式，以使它看上去与未访问过的链接不同。有时候用户不关心是否访问过链接，例如链接是应用的主导航时。</p>
+<p>不要使用链接执行除导航以外的其他操作。</p>
+<p>应保持链接文本简洁。如果要提供其他信息，可以放在提示中。当鼠标悬浮时显示提示。</p>
+<h3 id="标签">标签</h3>
+<p>标签是一个控件或一组相关控件的名称或标题。</p>
+<p>使用标签向用户指示他们应向邻近控件输入的内容（如果这并不明显）。例如，文本输入框上方的“名称”。还可以为一组相关控件添加标签，或在一组相关控件旁显示说明文本。</p>
+<p>如果要为控件添加标签，请将标签写成名词或简洁的名词短语，不要写成一个句子，也不要写成说明文本。请勿使用冒号或其他标点符号。</p>
+<p>你可以更自由地选择说明文本的长度，还可以使用标点符号。</p>
+<h3 id="浮出">浮出</h3>
+<p>浮出控件是轻型浮出控件，用来临时显示与用户当前正在执行的操作相关的 UI。它可用于显示一个菜单，显示隐藏的控件，显示有关某项的更多细节，或者请求用户确认某个操作。仅在响应用户点击或单击时才应显示浮出控件。当用户在浮出控件外部点击时，会始终取消该浮出控件。</p>
+<p>浮出主要用于以下几种情形：</p>
+<ul>
+<li>收集信息：如果用户选择一个需要更多输入的操作，例如选择一个选项或者键入信息，则该 UI 可以放在弹出窗口中，以使用户保持在其原来的上下文中。</li>
+<li>警告和确认：在用户采取可能有破坏性的操作之前警告用户。</li>
+<li>下拉菜单：如果应用栏中的按钮有多个选项，则在浮出控件中显示一个允许用户选择选项的下拉菜单。</li>
+<li>显示更多信息：显示有关用户对其感兴趣的屏幕项的更多详细信息。</li>
+</ul>
+<p>不要将浮出控件放置在非上下文位置（如屏幕的中心），原因如下：</p>
+<ul>
+<li>当 UI 显示在与调用它的操作断开连接的位置中时，用户需要去搜索此 UI，这会导致速度会减慢。总体体验会受到破坏，并产生令人不太愉悦而且不太流畅的 UI。</li>
+<li>用户可能未注意到弹出窗口已经出现，而且可能会通过继续点击来意外取消弹出窗口，从而使你的应用看上去不响应。</li>
+<li>用户希望居中的窗口（或其他任意放置的窗口）包含一个“关闭”或“取消”按钮，即使存在光取消选项，也想要使用“关闭”或“取消”按钮，这与轻型 UI 这一目标相违背。</li>
+</ul>
+<h3 id="翻转视图">翻转视图</h3>
+<p>翻转视图控件允许用户浏览应用中的不同视图或者浏览项目集合（如相册中的照片），一次浏览一个视图或项目。 它为用户提供了一种在浏览集合时查看每个项目的方法。</p>
+<p>你还可以添加上下文指示器控件，以便用户可以直接跳转到特定的项目。</p>
+<p>使用翻转视图控件可以：</p>
+<ul>
+<li>在由相关项目组成的小型集合（项目数 &lt; 10）中在不同项目之间切换。例如，在购物应用中，你可能希望在产品详细信息页面中显示产品的多个图像。对于小型集合，可以使用上下文指示器控件，但这通常不是必需的。</li>
+<li>在由相关项目组成的中型集合（项目数为 10 到 25 个）中在不同项目之间切换。例如，在房地产应用中，你可能希望针对每间房屋显示许多图像，以展示各个房间和视图。对于这些中型列表，请包括一个上下文指示器控件（与缩略图的幻灯片相似），以便让用户可以跳转到特定的照片。</li>
+<li>在应用的不同之间切换。例如，应用启动者可以使用一个视图以网格形式显示用户的收藏夹，使用另一个视图以列表形式显示收藏夹。你可以添加一个翻转视图控件来允许用户从一个视图导航到另一个视图。</li>
+</ul>
+<p>当集合中的项不能提供足够的上下文信息以帮助用户了解他们在集合中的位置时，使用上下文指示器。用于星期的翻转视图不需要上下文指示器，而用于产品图像的翻转视图需要。</p>
+<p>向用户指示当前的项目在集合中的位置。使用上下文指示器可以帮助用户了解集合的大小以及当前的项目相对于集合中其他项目的位置。</p>
+<p>针对项目数量和指定方案定制指示器。对于较小的集合，你可以在上下文指示器中显示整个集合。对于中型集合，你可能希望一次仅显示 5 个（示例）。对于非常直观的集合，你可以显示缩略图；对于基于文本的集合，你可能喜欢显示字母表，以便用户可以跳转到合适的字母。</p>
+<h3 id="下拉列表">下拉列表</h3>
+<p>用户使用下拉列表可以在值列表中作出选择。下拉列表是选定的项目始终可见、其他项目在需要时通过单击下拉按钮才显示的列表。通过下拉列表，用户可以选择一个且只能选择一个选项。</p>
+<p>使用下拉列表控件可让用户从一组项目中选择单个值，这些项目使用单独一行文本充分显示。</p>
+<p>请勿使用该控件显示包含多行文本或图像的项目。请改用列表视图或网格视图。</p>
+<p>当少于 5 个项目时，考虑使用单选按钮（如果只能选择一个项目）或复选框（如果可以选择多个项目）。</p>
+<p>当选择项在应用流中不太重要时使用下拉列表。 如果在多数情况下为大部分用户推荐了默认选项，则通过使用列表框显示所有的项可能会导致用户对选项进行不必要的注意。使用下拉列表可以节省屏幕空间并减少分心。</p>
+<p>按逻辑顺序排序下拉列表的项目，例如将相关的选项组合在一起，优先放置最常用的选项，或者使用字母顺序。按字母顺序排序名称，按数字顺序排序数字，并按时间先后顺序排序日期。</p>
+<p>在内容的右侧放置一定的边距（例如30像素）可以防止滚动条与内容重叠。</p>
+<p>允许用户跳转到特定的项目。确保你始终帮助用户感到他们能够控制其所在的位置以及要前往的位置。</p>
+<p>不要对大型集合使用翻转视图控件。对用户来说，因浏览每个项目而采用的重复性动作会变得非常繁琐。相反，请使用以下命令之一：</p>
+<ul>
+<li>列表视图</li>
+<li>网格视图</li>
+</ul>
+<h3 id="上下文菜单">上下文菜单</h3>
+<p>上下文菜单是轻型菜单，可让用户立即访问对象上的操作（如剪贴板命令）。</p>
+<p>在 Word 中，除了纵向的上下文菜单，还有一个横向的上下文菜单。</p>
+<p>在以手指操作的系统上，上下文菜单出现在所选对象的上方，在以鼠标操作的系统上，上下文菜单出现在鼠标指针的右下角。</p>
+<p>将在工具栏上无法找到的功能放在上下文菜单中，同时在菜单中也放置相同的功能入口。和对象相关较为密切且以上下文菜单最贴切的（比如需要对齐执行操作但是无法选择或以其他方式指示的命令）应该放在上下文菜单中，例如“剪切”“复制”和“粘贴”命令。</p>
+<p>命令的名称应该简短，尽量不要超过30个字符，最大不要超过50个字符。英文应使用句子格式，例如“Open with”。如果命令较长，则会截断显示，而忽略的字符以省略号“…”替代。</p>
+<p>尽可能显示最少数量的命令，最多显示6条。</p>
+<p>上下文菜单中相近的命令集合应该使用分隔符区分为不同的组，比如“剪切”“复制”和“粘贴”命令应分为一个组。这样可以增强可预见性，用户理解起来也更容易。</p>
+<p>按重要性排列上下文菜单中的命令，最重要的放在上方。</p>
+<p>上下文菜单中不要出现禁用状态，当命令不可用时，直接不显示命令。</p>
+<p>不使用项目快捷键。项目快捷键不能与上下文菜单一起使用。在菜单命令名称的开头不使用 &amp; 号。</p>
+<p>不显示将导致错误的命令。例如，当粘贴位置无法进行编辑时，不显示粘贴命令。</p>
+<p>上下文菜单通常处于隐藏状态，这是一种节省屏幕空间的有效方法。如果有一小组应用于选定对象或窗口区域的上下文命令和选项，请使用上下文菜单。上下文菜单有特定的顺序：最常用的项优先放置（主要命令），转换命令次之，最后是属性。此顺序可提供效率和可预见性。</p>
+<h3 id="复选框">复选框</h3>
+<p>通常，复选框为用户提供在两个独立且对立的选项之间表明选择的方法。例如，该选择可能为是否订阅新闻稿，或者是否选择列表中的每个电子邮件。在极少数情况下，复选框既不处于取消选中状态也不处于选中状态，它会处于所谓不确定的状态。例如，当复选框代表具有混合值的子选择集合时，它的选定状态不确定。</p>
+<p>复选框的状态：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">状态</th>
+<th style="text-align: left;">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">未选中</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">未选中聚焦</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">未选中鼠标悬浮</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">未选中按下</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">未选中不可用</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">选中</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">选中聚焦</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">选中鼠标悬浮</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">选中按下</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">选中不可用</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">不确定状态</td>
+<td style="text-align: left;">不确定状态用于指示选项是为部分但不是全部子选择设置的。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">不确定状态聚焦</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">不确定状态鼠标悬浮</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">不确定状态按下</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">不确定状态不可用</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<p>单个的复选框可以提供二元互斥的选项，在 iOS 上类似于开关（Switch）。多个复选框的组合可以提供多个不互斥的混合选项。复选框也可以嵌套。</p>
+<p>复选框应该状态明确，比如复选框表示横向，则不选中不能明确表示纵向，这时应使用两个单选按钮“横向”和“纵向”。</p>
+<p>复选框应表述为一个语句，使用肯定式语句，不要使用否定或双重否定语句，除非你故意使用黑暗模式。选中时该句为真，未选中时该句为假。例如“记住密码”。</p>
+<p>复选框的文本不要超过两行，尽量保持在一行。</p>
+<p>应在点击复选框的标签时也能选中复选框，这样可以增加选择区域的大小，而且更方便触摸用户使用。在 HTML 中的写法为：</p>
+<pre><code>&lt;input type=&quot;checkbox&quot; name=&quot;checkbox&quot; id=&quot;checkbox_id&quot; value=&quot;value&quot;&gt;
+&lt;label for=&quot;checkbox_id&quot;&gt;Text&lt;/label&gt;</code></pre>
+<p>不要使用不确定状态代表第三种状态。不确定状态用于指示选项是为部分但不是全部子选择设置的。因此，不要允许用于直接设置不确定状态。</p>
+<h3 id="列表框">列表框</h3>
+<p>列表框（也称为选择）为用户提供了通常从项目列表选择一个项目（但有时也选择多个项目）的方法。如果没有足够空间显示所有列表框中的项目，这些项目可以滑动。</p>
+<p>列表框始终处于打开状态（与下拉列表相反）。它的项目可以为文本字符串或数字值，或者它们可自定义为任何其他视觉对象。我们鼓励你创新。用户喜欢直接与应用内容交互。因此你可以选择在提供时显示实际内容，可能是图形或产品照片。</p>
+<p>在用户与项目交互时，它们通过更改状态并随之更改外观来提供反馈。列表框项目状态的例子包括正常、已按、未选择、已选择和已禁用。</p>
+<p>可点击项目以选择它，在多选模式中，点击已选择的项目可以取消选择。在单选模式中，点击另一个项目可将选择转移到该项目。使用手指垂直轻扫将使项目列表带有惯性地上下滚动。列表框具有滚动条，其位置可指示用户在项目列表中的相对位置，其大小可指示视图中的项目所占的比例。滚动条仅在滚动时可见。</p>
+<h3 id="导航栏">导航栏</h3>
+<p>导航栏，顾名思义，是让用户知道自己在哪个页面，可以跳转到其他页面的控件。</p>
+<p>导航栏一般位于页面的顶部，是用户能马上关注到的地方。导航是人机交互时非常重要的要素，如果不是特殊的情况，最好是放在顶部。</p>
+<p>导航的内容一般包含标题、返回（或叫后退），这些是真正的导航的功能。</p>
+<p>有时导航栏包含标签页，在 Android 中比较明显。标签页一般是平面导航时所用的导航方式，分层导航应该使用返回来表明分层。</p>
+<p>导航栏有时也称为标题栏，除了导航的主要功能外，有时为了让布局更精简和高效，在导航栏上也会放置功能控件，包括按钮、筛选等。在使用时应将新建按钮放在最右边，将视图切换的按钮放在最左边。</p>
+<h3 id="工具栏">工具栏</h3>
+<p>工具栏提供用户对数据或内容的控制命令。</p>
+<p>工具栏一般位于页面的底部。Windows 10 应用工具栏在顶部和底部都有。根据你的用户的使用习惯，也可以放在左侧和右侧。如果顶部已有导航栏，应避免在顶部放工具栏。</p>
+<p>一般将常用的功能放在最左侧，按优先级依次排列。如果是垂直的工具栏，则次序为从上到下。</p>
+<p>如果功能有相似，应置于一个组，多个组之间应区隔开。</p>
+<p>引用来源：<a href="https://msdn.microsoft.com/zh-cn/library/windows/apps/hh465302.aspx" class="uri">https://msdn.microsoft.com/zh-cn/library/windows/apps/hh465302.aspx</a></p>
+<h3 id="滑动条">滑动条</h3>
+<p>滑动条允许用户从一系列值中选择一个值。</p>
+<h4 id="连续滑动条">连续滑动条</h4>
+<p>用户可以从区间段中选择任意一个值。比如调节声音可以从0-100%中选择任意一个值。</p>
+<h4 id="步进滑动条">步进滑动条</h4>
+<p>用户可以选择区间段中的某个值。比如从字体中选择小、中、大三个值中的一个。</p>
+<h4 id="具体数值滑动条">具体数值滑动条</h4>
+<p>在选择值时，显示具体的数值。</p>
+<h3 id="短暂通知">短暂通知</h3>
+<p>短暂显示的通知，会自动消失。用于快速反馈的轻量组件。</p>
+<h3 id="通知">通知</h3>
+<p>应用向用户发送的消息，可以是诸如发生了特定的事件、用户进行了什么操作等等。</p>
+<h3 id="标签页">标签页</h3>
+<h3 id="文本输入框">文本输入框</h3>
+<p>包含单行文字输入框和多行文字输入框。</p>
+<p>单行文字输入框：只占一行的高度，输入较多的文字时，会很像滚动显示。不应有横向滚动条。</p>
+<p>多行文字输入框：可以占多行的高度，输入较多的文字是，有垂直或横向的滚动条。记事本、Word的输入框就是多行文字输入框。</p>
+<h3 id="提示语">提示语</h3>
+<p>当鼠标悬浮在组件上时显示提示语。用于对组件进行解释，辅助用户理解组件的意思。或者当组件不能完成显示时，使用提示语显示完整的文字。</p>
+<p>提示语不要包含太复杂的组件，比如图形。使用简短的文字做提示语。</p>
+<p>提示语一般位于下方，如果组件在页面下方，则提示语应在上方。</p>
+<h3 id="步进器">步进器</h3>
+<p>提示用户整体的步骤数，和当前所处的步骤。一般用于向导。比如安装桌面应用时，注册账号时。</p>
+<h3 id="快捷键">快捷键</h3>
+<p>快捷键是一种特殊的模式，用户可以使用一些特定的组合按键完成某个操作。在使用快捷键时应参考应用所在平台的快捷键，不能随意设置。</p>
+<p>Mac OS X中的快捷键表示：</p>
+<ul>
+<li>Command ⌘</li>
+<li>Shift ⇧</li>
+<li>Option ⌥</li>
+<li>Control ⌃</li>
+<li>Caps Lock ⇪</li>
+<li>Fn</li>
+</ul>
+<p>大部分情况下，Windows 下的辅助键和 Mac OS X 的辅助键对应如下：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Windows</th>
+<th style="text-align: left;">Mac OS X</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Windows</td>
+<td style="text-align: left;">Command</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Shift</td>
+<td style="text-align: left;">Shift</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Alt</td>
+<td style="text-align: left;">Option</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ctrl</td>
+<td style="text-align: left;">Control</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fn</td>
+<td style="text-align: left;">Fn</td>
+</tr>
+</tbody>
+</table>
+<p>可以使用单个字母按键做快捷键，也可以使用辅助键+字母做快捷键。前者一般用于非常多快捷键的情形，此时每个字母就可以进入不同的模式，比如 Photoshop、Coreldraw、AutoCAD等产品。</p>
+<p>常用的快捷键如下：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">操作</th>
+<th style="text-align: left;">Windows 快捷键</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">选择全部</td>
+<td style="text-align: left;">Ctrl+A</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">加粗文字</td>
+<td style="text-align: left;">Ctrl+B</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">复制</td>
+<td style="text-align: left;">Ctrl+C</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">克隆</td>
+<td style="text-align: left;">Ctrl+D</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">导出</td>
+<td style="text-align: left;">Ctrl+E</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">搜索</td>
+<td style="text-align: left;">Ctrl+F</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">跳到</td>
+<td style="text-align: left;">Ctrl+G</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">替换</td>
+<td style="text-align: left;">Ctrl+H</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">斜体文字</td>
+<td style="text-align: left;">Ctrl+I</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">两端对齐</td>
+<td style="text-align: left;">Ctrl+J</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">插入超链接</td>
+<td style="text-align: left;">Ctrl+K</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">左对齐</td>
+<td style="text-align: left;">Ctrl+L</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">缩进</td>
+<td style="text-align: left;">Ctrl+M</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">新建</td>
+<td style="text-align: left;">Ctrl+N</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">打开</td>
+<td style="text-align: left;">Ctrl+O</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">打印</td>
+<td style="text-align: left;">Ctrl+P</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">退出应用</td>
+<td style="text-align: left;">Ctrl+Q；Alt+F4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">右对齐</td>
+<td style="text-align: left;">Ctrl+R</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">保存</td>
+<td style="text-align: left;">Ctrl+S</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">转换（Photoshop）</td>
+<td style="text-align: left;">Ctrl+T</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">下划线</td>
+<td style="text-align: left;">Ctrl+U</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">粘贴</td>
+<td style="text-align: left;">Ctrl+V</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">关闭文档；关闭标签页</td>
+<td style="text-align: left;">Ctrl+W</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">剪切</td>
+<td style="text-align: left;">Ctrl+X</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">重做</td>
+<td style="text-align: left;">Ctrl+Y；Shift+Ctrl+Z</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">撤销</td>
+<td style="text-align: left;">Ctrl+Z</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">页面首处；行首</td>
+<td style="text-align: left;">Home</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">页面末处；行末</td>
+<td style="text-align: left;">End</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">下一页</td>
+<td style="text-align: left;">PageDown</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">上一页</td>
+<td style="text-align: left;">PageUp</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">跳到文档首处</td>
+<td style="text-align: left;">Ctrl+Home</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">跳到文档末处</td>
+<td style="text-align: left;">Ctrl+End</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">帮助</td>
+<td style="text-align: left;">F1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">重命名</td>
+<td style="text-align: left;">F2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">搜索下一个</td>
+<td style="text-align: left;">F3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">N/A</td>
+<td style="text-align: left;">F4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">刷新</td>
+<td style="text-align: left;">F5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">跳到地址栏（浏览器）</td>
+<td style="text-align: left;">F6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">N/A</td>
+<td style="text-align: left;">F7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">N/A</td>
+<td style="text-align: left;">F8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">N/A</td>
+<td style="text-align: left;">F9</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">N/A</td>
+<td style="text-align: left;">F10</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">全屏</td>
+<td style="text-align: left;">F11</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">N/A</td>
+<td style="text-align: left;">F12</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">聚焦下一组件</td>
+<td style="text-align: left;">Tab</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">聚焦上一组件</td>
+<td style="text-align: left;">Shift+Tab</td>
+</tr>
+</tbody>
+</table>
+<p>如果产品比较专业，功能较多且很多功能都较为常用，可以使用 Ctrl、Shift、Alt 组合的快捷键。常见的有以下：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">操作</th>
+<th style="text-align: left;">Windows 快捷键</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">另存为</td>
+<td style="text-align: left;">Shift+Ctrl+S</td>
+</tr>
+</tbody>
+</table>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li><a href="https://www.google.com/design/spec/material-design/introduction.html">Google Material Design</a></li>
+<li><a href="https://developer.apple.com/library/prerelease/ios/documentation/UserExperience/Conceptual/MobileHIG/index.html">iOS Human Interface Guidelines</a></li>
+<li><a href="https://developer.apple.com/library/mac/documentation/UserExperience/Conceptual/OSXHIGuidelines/">OS X Human Interface Guidelines</a></li>
+<li><a href="https://developer.apple.com/tvos/human-interface-guidelines/">Apple TV Human Interface Guidelines</a></li>
+<li><a href="https://dev.windows.com/zh-cn/design">Windows 10 设计</a></li>
+</ul>
+<p>©2020 David Peng | 采用 <a href="https://pandoc.org/" target="_blank">Pandoc</a> 搭建</p>
+</body>
+</html>

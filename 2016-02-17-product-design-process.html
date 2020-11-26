@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="David Peng" />
+  <meta name="dcterms.date" content="2016-02-17" />
+  <title>DP – 产品设计流程</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      word-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <link rel="shortcut icon" type="image/png" href="https://cdn.jsdelivr.net/gh/duzyn/img/favicon.png"/>
+  <link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/duzyn/img/apple-touch-icon.png">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-18121046-9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-18121046-9');
+  </script>
+</head>
+<body>
+<div style="text-align:center">
+  <a href="/index.html">
+    <img src="https://cdn.jsdelivr.net/gh/duzyn/img/apple-touch-icon.png" alt="DP" style="height:48px;width:48px;border-radius: 24px;">
+  </a>
+</div>
+<header id="title-block-header">
+<h1 class="title">产品设计流程</h1>
+<p class="author">David Peng</p>
+<p class="date">2016-02-17</p>
+</header>
+<h2 id="文档概述">文档概述</h2>
+<p>为了总结设计的成功经验，保证产品设计可持续地成功，而不是只依赖于个人的发挥，特制定此流程，以规范和指导产品部设计产品。</p>
+<h2 id="读者对象">读者对象</h2>
+<p>此设计流程规范是产品部的内部规范，针对的对象为：</p>
+<ul>
+<li>产品经理</li>
+<li>交互设计师</li>
+<li>UI 设计师</li>
+</ul>
+<h2 id="交互设计的流程">交互设计的流程</h2>
+<ol type="1">
+<li><p><strong>理解需求。</strong></p>
+<p>首先交互设计师要理解产品的需求。这些需求是在产品需求规格书中定义好的。只有在充分理解需求之后，才能开始交互设计。不能偏离需求去做设计。</p></li>
+<li><p><strong>画出流程图和信息架构。</strong></p>
+<p>当理解了需求之后，交互设计师应开始构思产品业务的流程和页面之间的信息架构。对于客户端类的产品，流程图是为主的。对于网站（尤其是内容类网站），信息架构师为主的。</p>
+<p>可以使用 Visio 画流程图，使用 Xmind/MindManager/Visio 画信息架构。应保存文件原稿和导出成 PNG 或 PDF 等通用格式。</p></li>
+<li><p><strong>画线框图。</strong></p>
+<p>在确立了流程和信息架构后，此时可以构思产品的基本页面。以纸笔或 Axure 画线框图，容易修改，可以快速迭代想法。</p>
+<p>要求输出 Axure 线框图原型。可选页面之间调转的交互。</p></li>
+<li><p><strong>A/B 测试。输出测试结论。</strong></p>
+<p>在做出了线框图时，应对主要流程的关键页面做 A/B 测试，即对同一页面做出至少 2 个版本，以测试哪种设计更符合用户的偏好。如果几种设计都不符合，应重新修改设计。在此过程要求输出测试结论，格式可以是 DOCX 或 TXT。</p></li>
+<li><p><strong>高保真原型。</strong></p>
+<p>在做完线框图的 A/B 测试之后，应根据测试结论做高保真的交互原型。此时界面要能大致达到实际开发后的效果，以测试用户在面对最终产品时的看法。UI 设计师提供 UI 素材，比如主要界面的完整设计切图、某些可复用图标的切图等。</p>
+<p>包含范围：主要流程上的界面。可以不包括各种错误、异常等细节界面。</p></li>
+<li><p><strong>用户测试。结合 UI 主要界面。</strong></p>
+<p>在做完高保真原型后，要再做用户测试。此时测试的是用户对交互、UI 总体的看法。</p></li>
+<li><p><strong>输出交互设计文档。</strong></p>
+<p>在完成所有的用户测试后，总结设计结论，撰写交互设计文档。交互设计文档要清晰、准确地描述产品的交互设计的细节。产品经理既负责需求又负责设计时，可以将设计文档和需求文档结合起来，以减少工作量。</p></li>
+<li><p><strong>研发内部评审。</strong></p>
+<p>交互设计文档应首先在产品部内部评审，然后在项目组内评审。评审时要完整地记录评审意见，根据评审意见修改设计和文档。</p></li>
+<li><p><strong>外部评审（可选）。</strong></p>
+<p>对于较大的版本，要在公司层面做评审。邀请项目或产品的相关利益干系人做评审，这里干系人可以是销售、市场、售后、技术支持等，依具体情况而定。</p>
+<p>较小的版本，不需要再公司层面做评审。</p></li>
+<li><p><strong>跟进 UI 设计。</strong></p>
+<p>完成交互设计后，跟进 UI 设计按交互设计实现视觉。</p></li>
+</ol>
+<h2 id="ui-设计的流程">UI 设计的流程</h2>
+<ol type="1">
+<li><p><strong>理解需求</strong></p>
+<p>产品需求和原型是UI设计的出发点，从需求评审会议或者需求文档中得到需求的具体内容，较小的项目可从产品经理的沟通中得到需求，从中深入了解产品介绍和具体的功能细节。</p>
+<p>产品原型基本决定UI设计的方向，从交互到细节元素都集成在原型文件里，所以必须完全理解和掌握当前项目的产品原型才能准确的进行产品的UI设计。</p></li>
+<li><p><strong>定风格</strong></p>
+<p>UI设计师收集相关资料分析目标用户的使用特征、场景、情感、习惯、心理、需求等。另外分析竞品的设计，每个设计师的思维都有局限性，看到别人的设计会有触类旁通的好处，一是能做出差异化的设计，二是制定超越竞品的设计目标。</p>
+<p>根据产品原型、用户分析和公司产品的设计指南，确定产品UI的基本风格，颜色、样式、尺寸、图标、字体等方面要有基本的草案，可以绘制一些草图和低保真的效果图。</p></li>
+<li><p><strong>UI原型</strong></p>
+<p>选择一个具有代表性的界面，设计出多种方案的效果图（两个以上），将界面的色调、风格、窗口、图标和按钮等最精确的表现出来。输出物可在不改变交互方式的基础上，基于原型进行一定的优化。出多种方案时，可以从界面布局、图标风格、细节处理等方面做一些差异化的方案。</p></li>
+<li><p><strong>A/B测试</strong></p>
+<p>将UI原型提交相关人员进行A/B测试，针对视觉方面提出意见，总结优缺点，通过多次修改讨论确定最终可行的方案。</p></li>
+<li><p><strong>设计UI主要界面和用户测试</strong></p>
+<p>设计出主要的界面效果图（产品原型中的所有界面），按原型中页面顺序命名，确保效果图的查看顺序和原型一致。然后效果图结合原型文件进行用户测试，确定原型和界面设计的可行性。</p></li>
+<li><p><strong>设计文档</strong></p>
+<p>在设计界面效果图后，输出设计文档，对设计进行说明，针对一些设计亮点可做重点介绍，要求图文并茂。设计文档可用于评审会、产品发布会、wiki知识分享等。</p></li>
+<li><p><strong>内部评审</strong></p>
+<p>UI效果图完成后提交进行研发内部评审，参会人员包括产品线总监、产品经理、UI设计师和开发人员和测试人员等。评审视觉效果和开发的可实现性，评审成果须是各方达成一致意见，提出合理的修改和优化建议。评审结束后，UI设计师应根据收集的意见修改优化效果图。</p></li>
+<li><p><strong>外部评审</strong></p>
+<p>UI效果图提交给市场、销售或人力资源等部门人员进行外部评审，以用户视角评审UI效果图，并给出体验报告。筛选有价值的意见对UI效果图进行修改优化，输出最终版UI效果图。</p></li>
+<li><p><strong>切图及标注</strong></p>
+<p>切图前要和开发人员沟通，可能对切图有一些特殊的图片资源要求。切图注意事项：按钮应提供4-5中状态（PC: normal, hot, focused, pushed, disable. APP: normal, pressed, disable. TV: normal, focused, pressed, disable）；切图按模块放入对应文件夹方便开发人员查找（例如：toolbar, navbar等），mac和app切图应提供适配各分辨率的切图（android: xxhdpi, xhdpi. Ios&amp;mac: @3x, @2x, @1x）。</p>
+<p>标注文件力求各元素均有尺寸和坐标标注，文字有字号、样式和颜色标注。部分按钮可以用颜色值的，要标注各种状态时的颜色值。</p></li>
+<li><p><strong>后期跟进</strong></p>
+<p>开发过程中及时跟进，切图和标注需要调整的应及时完成，开发效果和效果图有偏差的应及时反馈。Demo测试时，列出所有开发效果和效果图偏差的地方，反馈给开发人员。</p></li>
+</ol>
+<h2 id="其他">其他</h2>
+<p>所有的输出格式要求保存在位于 SVN 的项目文件夹中，以免文件遗失，也方便团队之间分享文件。</p>
+<p>©2020 David Peng | 采用 <a href="https://pandoc.org/" target="_blank">Pandoc</a> 搭建</p>
+</body>
+</html>

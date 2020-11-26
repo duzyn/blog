@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="David Peng" />
+  <meta name="dcterms.date" content="2020-06-12" />
+  <title>DP – 值得推荐的 Windows 应用</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      word-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <link rel="shortcut icon" type="image/png" href="https://cdn.jsdelivr.net/gh/duzyn/img/favicon.png"/>
+  <link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/duzyn/img/apple-touch-icon.png">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-18121046-9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-18121046-9');
+  </script>
+</head>
+<body>
+<div style="text-align:center">
+  <a href="/index.html">
+    <img src="https://cdn.jsdelivr.net/gh/duzyn/img/apple-touch-icon.png" alt="DP" style="height:48px;width:48px;border-radius: 24px;">
+  </a>
+</div>
+<header id="title-block-header">
+<h1 class="title">值得推荐的 Windows 应用</h1>
+<p class="author">David Peng</p>
+<p class="date">2020-06-12</p>
+</header>
+<nav id="TOC" role="doc-toc">
+
+</nav>
+<p>这些都是我在工作和生活中必用的 Windows 应用，每一个都是各自领域的佼佼者。有了这些应用，处理各项事情都可以有更高的效率。</p>
+<h2 id="scoop">Scoop</h2>
+<p>为什么先介绍 <a href="https://scoop.sh">Scoop</a>？因为它是安装应用的应用，使用它我们可以快速安装多个其他的应用。</p>
+<p>Scoop 是一个包管理器，主要是给开发人员使用命令行快速安装软件包所用。在 Linux 上有 <a href="https://linux.die.net/man/8/apt-get">apt-get</a>，<a href="https://wiki.archlinux.org/index.php/pacman">pacman</a>，<a href="https://fedoraproject.org/wiki/Yum">yum</a>，在 Mac 上有 <a href="https://brew.sh">Homebrew</a>，在 Windows 上，之前有个 <a href="https://chocolatey.org/">Chocolatey</a>，功能与 Scoop Scoop 类似，但是是一家公司维护的。综合来说，Scoop 是 Windows 平台上目前最好用的包管理。</p>
+<p>Scoop 的优势是：</p>
+<ul>
+<li>简单。使用一个命令就能快速搜索、安装、卸载软件。无需去到软件的官网的下载页面，下载 app。因为 Scoop 是开源项目，支持的软件也越来越多，所以它变得越来越方便。</li>
+<li>安全。虽然是开源的项目，但是每个软件都是从官方渠道下载，并且使用 <a href="https://www.virustotal.com/">VirusTotal</a> 扫描，确保网友贡献的包不会出现病毒。这比个人维护的项目更加可靠。</li>
+<li>更新。Scoop 使用一个 JSON 文件表示一个应用的各项元数据和安装、更新、卸载方法，并且有一个持续集成的服务，自动定期检测软件的更新版本。这样我们可以一个命令就将软件更新到最新版本。</li>
+<li>强大。Scoop 可以同时安装一个软件的多个版本，并在多个版本中可以设置使用哪个版本。这在使用的不同版本的开发环境时特别有用，比如不同的 JDK 版本，不同的 apache 版本等。</li>
+</ul>
+<p>还有很多其他强大的特性，不再一一列举，可以访问 <a href="https://github.com/lukesampson/scoop/wiki">Scoop Wiki</a> 了解更多。</p>
+<h3 id="安装-scoop">安装 Scoop</h3>
+<p>安装 Scoop 特别简单，只需要以 <strong>管理员身份</strong> 打开 PowerShell，运行以下命令将 Scoop 安装到电脑（默认在我的文档的 scoop 下）</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Set-ExecutionPolicy</span> -ExecutionPolicy RemoteSigned -Scope CurrentUser</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">iwr</span> -useb get.<span class="fu">scoop</span>.<span class="fu">sh</span> | <span class="fu">iex</span></span></code></pre></div>
+<p>或运行下述命令将 Scoop 安装到 C 盘：</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Set-ExecutionPolicy</span> -ExecutionPolicy RemoteSigned -Scope CurrentUser</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="va">$env</span>:SCOOP=&#39;C:\scoop&#39;</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>[Environment]::SetEnvironmentVariable(&#39;SCOOP&#39;, <span class="va">$env</span>:SCOOP, &#39;User&#39;)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">iwr</span> -useb get.<span class="fu">scoop</span>.<span class="fu">sh</span> | <span class="fu">iex</span></span></code></pre></div>
+<p>要了解 Scoop 的基本用法，输入命令 <code>scoop help</code>。</p>
+<h3 id="添加常用软件源">添加常用软件源</h3>
+<p>安装 Scoop 后初始只有 main 软件源，里面都是些命令行的应用。日常用的 GUI 应用基本都在 extras 软件源中。常用软件的老版本在 versions 软件源中。JRE，JDK 在 java 软件源中。</p>
+<p>使用下述命令添加软件源：</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>scoop bucket add extras</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>scoop bucket add java</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>scoop bucket add versions</span></code></pre></div>
+<h3 id="搜索应用">搜索应用</h3>
+<p>搜索应用使用命令，其中 APP 是搜索关键词：</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>scoop search APP</span></code></pre></div>
+<h3 id="安装应用">安装应用</h3>
+<p>安装应用使用命令，其中 APPNAME 是应用名称：</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>scoop install APPNAME</span></code></pre></div>
+<h3 id="卸载应用">卸载应用</h3>
+<p>卸载应用使用命令，其中 APPNAME 是应用名称：</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>scoop uninstall APPNAME</span></code></pre></div>
+<h3 id="更新应用">更新应用</h3>
+<p>更新应用使用命令，其中 APPNAME 是应用名称：</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>scoop update APPNAME</span></code></pre></div>
+<p>要更新所有应用，使用命令：</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>scoop update *</span></code></pre></div>
+<h2 id="v2rayn">v2rayN</h2>
+<p><a href="https://www.v2ray.com/">v2ray</a> 是一个好用的 <strong>上网</strong> 工具。<a href="https://github.com/2dust/v2rayN">v2rayN</a>(Windows) 或 v2rayU(macOS) 或 Shadowrocket(iOS) 是 v2ray 的 GUI 版本。使用命令安装：</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>scoop install v2rayn</span></code></pre></div>
+<p>然后在 <a href="https://github.com/ugvf2009/Miles">ugvf2009/Miles</a> 查看使用教程。</p>
+<p>在订阅设置中添加以下订阅：</p>
+<ul>
+<li>备注：ugvf2009/Miles</li>
+<li>地址：https://jiang.netlify.com</li>
+</ul>
+<p>然后更新订阅，选择一个服务器看能不能上网。最好设置为打开全局代理，然后绕过局域网及大陆地址。这样只有局域网和大陆的地址走直连，其他海外地址都走代理，速度会快一些。</p>
+<h2 id="git">Git</h2>
+<p><a href="https://gitforwindows.org">Git</a> 是目前最流行的源代码版本管理软件。Git 是装完 Scoop 后第一个要装的应用。因为 Scoop 的软件源都是使用 Git 管理的。使用命令安装：</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>scoop install git</span></code></pre></div>
+<p><a href="https://desktop.github.com/">Github Desktop</a> 是 Github 的管理 Github 上的 repo 的工具。可视化的操作比 Git 命令行更友好一些。使用命令安装：</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>scoop install github</span></code></pre></div>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2020-06-12-windows-apps/github-desktop-screenshot-windows.png" alt="Github Desktop" /><figcaption aria-hidden="true">Github Desktop</figcaption>
+</figure>
+<p><a href="https://tortoisesvn.net">TortoiseSVN</a> 是一个 SVN GUI。使用命令安装：</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>scoop install tortoisesvn</span></code></pre></div>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2020-06-12-windows-apps/tortoisesvn-context-menu-dir-control.png" alt="TortoiseSVN 右键菜单" /><figcaption aria-hidden="true">TortoiseSVN 右键菜单</figcaption>
+</figure>
+<h2 id="zip">7-Zip</h2>
+<p><a href="https://www.7-zip.org/">7-Zip</a> 是免费好用的压缩、解压缩工具，支持几乎所有的压缩格式，而且文档好用，支持命令行。使用命令安装：</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>scoop install 7zip</span></code></pre></div>
+<p>就算不主动安装 7-Zip，在你安装其他应用时，也可能会自动安装 7-Zip，因为有些安装包下载下来后会保存为 7z 压缩包，Scoop 会先安装依赖包 7zip，然后用它解压缩 7z 文件。</p>
+<p>同类软件 <a href="https://www.peazip.org">PeaZip</a> 也可以尝试，两者差别不大。使用命令安装：</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>scoop install peazip</span></code></pre></div>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2020-06-12-windows-apps/peazip.png" alt="PeaZip" /><figcaption aria-hidden="true">PeaZip</figcaption>
+</figure>
+<h2 id="everything">Everything</h2>
+<p><a href="https://www.voidtools.com">Everything</a> 是基于名称快速定位文件和文件夹的工具。其可以在数分钟内索引完整个硬盘的文件。有了它之后，你的文件可以随意放，只需要依稀记得文件名即可。使用命令安装：</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>scoop install everything</span></code></pre></div>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2020-06-12-windows-apps/everything-search-window.png" alt="Everything 搜索窗口界面" /><figcaption aria-hidden="true">Everything 搜索窗口界面</figcaption>
+</figure>
+<h2 id="google-chrome">Google Chrome</h2>
+<p><a href="https://www.google.com/chrome/">Google Chrome</a> 是目前最快、最好用、跨平台的浏览器。使用命令安装：</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>scoop install googlechrome</span></code></pre></div>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2020-06-12-windows-apps/connected_global_desktop.png" alt="Google Chrome" /><figcaption aria-hidden="true">Google Chrome</figcaption>
+</figure>
+<p>同类软件 <a href="https://www.mozilla.org/firefox/">Firefox</a> 也可以尝试。使用命令安装：</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>scoop install firefox</span></code></pre></div>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2020-06-12-windows-apps/firefox-desktop.jpg" alt="Firefox 桌面版" /><figcaption aria-hidden="true">Firefox 桌面版</figcaption>
+</figure>
+<h2 id="sumatrapdf">SumatraPDF</h2>
+<p><a href="https://www.sumatrapdfreader.org">SumatraPDF</a> 是轻量化的 PDF 阅读器，比庞大臃肿的 Adobe Acrobat PDF Reader 不知道轻爽了多少。其打开 PDF 文件速度快，在打开 PDF 文件时，如果文件有变化，可以实时刷新。使用命令安装：</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>scoop install sumatrapdf</span></code></pre></div>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2020-06-12-windows-apps/sumatrapdf.png" alt="SumatraPDF" /><figcaption aria-hidden="true">SumatraPDF</figcaption>
+</figure>
+<h2 id="visual-studio-code">Visual Studio Code</h2>
+<p><a href="https://code.visualstudio.com/">Visual Studio Code</a> 是微软出品的免费开源、跨平台的编辑器。功能强大，插件丰富，记笔记、写代码都合适。使用命令安装：</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>scoop install vscode</span></code></pre></div>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2020-06-12-windows-apps/vscode-screenshot-win-lg.png" alt="Visual Studio Code Windows 版" /><figcaption aria-hidden="true">Visual Studio Code Windows 版</figcaption>
+</figure>
+<p>同类软件 <a href="https://notepad-plus-plus.org">Notepad++</a> 也还不错。在打开特别大的文本文件时，比 Code 性能好。使用命令安装：</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>scoop install notepadplusplus</span></code></pre></div>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2020-06-12-windows-apps/notepad4ever.gif" alt="Notepad++ 演示" /><figcaption aria-hidden="true">Notepad++ 演示</figcaption>
+</figure>
+<p><a href="https://www.sublimetext.com/3">Sublime Text</a> 也不错，使用命令安装：</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>scoop install sublime-text</span></code></pre></div>
+<h2 id="draw.io">draw.io</h2>
+<p><a href="https://www.draw.io">draw.io</a> 是一个免费开源、基于浏览器的流程图编辑器，可以完全替代庞大臃肿的 Visio。使用命令安装：</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>scoop install draw.<span class="fu">io</span></span></code></pre></div>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2020-06-12-windows-apps/diagrams-features.png" alt="draw.io" /><figcaption aria-hidden="true">draw.io</figcaption>
+</figure>
+<h2 id="sharex">ShareX</h2>
+<p><a href="https://getsharex.com/">ShareX</a> 是强大好用的截图工具。可截取桌面、区域、应用、录制视频、录制 GIF 图，截图之后可标注、分享到图床。使用命令安装：</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>scoop install sharex</span></code></pre></div>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2020-06-12-windows-apps/ShareX_Screenshot.png" alt="ShareX" /><figcaption aria-hidden="true">ShareX</figcaption>
+</figure>
+<p>要录制视频和 GIF 图，需要安装 <a href="https://ffmpeg.org">FFmpeg</a>，使用命令安装：</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>scoop install ffmpeg</span></code></pre></div>
+<p>安装并打开 ShareX 后，依次进入 动作设置 → 屏幕记录 → 屏幕录制选项，在 FFmpeg 路径中设置 ffmpeg.exe 的地址，例如是 C:\scoop\apps\ffmpeg\current\bin\ffmpeg.exe。</p>
+<p>ShareX 不太好用的功能是滚动截屏，<a href="https://www.faststone.org/FSCaptureDetail.htm">FastStone Capture</a> 则更好用。使用命令安装：</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>scoop install fscapture</span></code></pre></div>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2020-06-12-windows-apps/FSCapturePanel.gif" alt="FastStone Capture" /><figcaption aria-hidden="true">FastStone Capture</figcaption>
+</figure>
+<p>FastStone Capture 是收费软件，但百度搜索即可找到可用的序列号，请自行查找。</p>
+<h2 id="faststone-image-viewer">FastStone Image Viewer</h2>
+<p><a href="https://www.faststone.org/FSViewerDetail.htm">FastStone Image Viewer</a> 和 FastStone Capture 是同一家公司出品的，是免费强大的看图、图片管理软件。使用命令安装：</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>scoop install fsviewer</span></code></pre></div>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2020-06-12-windows-apps/FSViewerScreenShot1.jpg" alt="FastStone Image Viewer" /><figcaption aria-hidden="true">FastStone Image Viewer</figcaption>
+</figure>
+<h2 id="wiztree">WizTree</h2>
+<p><a href="https://antibody-software.com/web/software/software/wiztree-finds-the-files-and-folders-using-the-most-disk-space-on-your-hard-drive">WizTree</a> 是一个硬盘空间分析软件，可列出每个文件和文件夹的硬盘占用情况。在磁盘分区存满文件后，我们可以用它来快速找到那些占用空间大而没用的文件，从而清理以获得更多空间。WizTree 的速度特别快，扫描一个分区比同类软件 <a href="https://windirstat.net/">WinDirStat</a> 快得多，和 Everything 有的一比。使用命令安装：</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>scoop install wiztree</span></code></pre></div>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2020-06-12-windows-apps/wiztree-treemap.jpg" alt="WizTree" /><figcaption aria-hidden="true">WizTree</figcaption>
+</figure>
+<h2 id="vlc">VLC</h2>
+<p><a href="https://www.videolan.org/">VLC</a> 是免费开源、跨平台的全能音视频播放器。使用命令安装：</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>scoop install vlc</span></code></pre></div>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2020-06-12-windows-apps/vlc_win.jpg" alt="VLC" /><figcaption aria-hidden="true">VLC</figcaption>
+</figure>
+<h2 id="quicklook">QuickLook</h2>
+<p><a href="https://pooi.moe/QuickLook/">QuickLook</a> 可以实现按空格即可预览文件，而无需双击打开。就像在 Mac 电脑上一样。使用命令安装：</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>scoop install quicklook</span></code></pre></div>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2020-06-12-windows-apps/quicklook.png" alt="QuickLook" /><figcaption aria-hidden="true">QuickLook</figcaption>
+</figure>
+<h2 id="windynamicdesktop">WinDynamicDesktop</h2>
+<p><a href="https://github.com/t1m0thyj/WinDynamicDesktop">WinDynamicDesktop</a> 可以实现 Windows 10 在天黑后自动切换系统主题为暗色，天亮后再自动切换为亮色，桌面壁纸也可随一天的时刻变化。就像在 Mac 电脑上一样。使用命令安装：</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>scoop install win-dynamic-desktop</span></code></pre></div>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2020-06-12-windows-apps/win-dynamic-desktop-select-theme.png" alt="WinDynamicDesktop 选择主题" /><figcaption aria-hidden="true">WinDynamicDesktop 选择主题</figcaption>
+</figure>
+<h2 id="windows-terminal">Windows Terminal</h2>
+<p><a href="https://github.com/microsoft/terminal">Windows Terminal</a> 是微软出品的终端软件。可以在一个软件中同时打开命令提示符、PowerShell、WSL、MSYS2、Cygwin 等各种 Shell。使用命令安装：</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>scoop install windows-terminal</span></code></pre></div>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2020-06-12-windows-apps/windows-terminal-overview.png" alt="Windows Terminal" /><figcaption aria-hidden="true">Windows Terminal</figcaption>
+</figure>
+<p>打开设置后，添加 PowerShell Core 到新建菜单中，其中 guid，可以使用后面的 <a href="#uuid">uuid</a> 生成。</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>            <span class="fu">{</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>                <span class="er">//</span> <span class="er">PowerShell</span> <span class="er">Core</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>                <span class="dt">&quot;guid&quot;</span><span class="fu">:</span> <span class="st">&quot;{30d8318e-49bf-4c92-bea9-5aa57741014f}&quot;</span><span class="fu">,</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>                <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;PowerShell Core&quot;</span><span class="fu">,</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>                <span class="dt">&quot;commandline&quot;</span><span class="fu">:</span> <span class="st">&quot;pwsh.exe&quot;</span><span class="fu">,</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>                <span class="dt">&quot;startingDirectory&quot;</span><span class="fu">:</span> <span class="st">&quot;%USERPROFILE%&quot;</span><span class="fu">,</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>                <span class="dt">&quot;hidden&quot;</span><span class="fu">:</span> <span class="kw">false</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>            <span class="fu">}</span><span class="er">,</span></span></code></pre></div>
+<h2 id="pandoc">Pandoc</h2>
+<p><a href="https://pandoc.org">Pandoc</a> 是一个全能标记语言转换工具。使用命令安装：</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>scoop install pandoc pandoc-crossref</span></code></pre></div>
+<p>从 GitHub 上下载 <a href="https://github.com/duzyn/pandoc-templates">pandoc-templates</a>。然后将此目录和 Pandoc 的目录链接起来。</p>
+<p>在 Windows 上以管理员身份打开命令提示符，输入命令 <code>mklink /D "%APPDATA%\pandoc" "D:\GitHub\pandoc-templates"</code> 创建命令的符号链接。</p>
+<h2 id="wkhtmltopdf">wkhtmltopdf</h2>
+<p><a href="https://wkhtmltopdf.org/">wkhtmltopdf</a> 可以将 HTML 文件转换为 PDF 文件，可配合 Pandoc 使用。使用命令安装：</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>scoop install wkhtmltopdf</span></code></pre></div>
+<h2 id="miktex">MiKTeX</h2>
+<p><a href="https://miktex.org">MiKTeX</a> 是一个 TeX 发行版。优点是可以在编译 LaTeX 文件时，自动下载安装缺失的包，可配合 Pandoc 使用，将 Markdown 文件转换为 PDF 文件。使用命令安装：</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>scoop install latex</span></code></pre></div>
+<h2 id="python-相关">Python 相关</h2>
+<p><a href="https://www.python.org/">Python</a> 是一种常用的编程语言，有很多 Python 应用。使用命令安装：</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>scoop install python37</span></code></pre></div>
+<h3 id="pipenv">pipenv</h3>
+<p><a href="https://github.com/pypa/pipenv">pipenv</a> 是 Python 环境管理工具，可让不同的项目使用不同的 Python 版本。使用命令安装：</p>
+<pre class="shell"><code>pip install pipenv</code></pre>
+<h3 id="weasyprint">WeasyPrint</h3>
+<p><a href="https://weasyprint.org/">WeasyPrint</a> 可以将 HTML 文件转换为 PDF 文件，可配合 Pandoc 使用。使用命令安装：</p>
+<pre class="shell"><code>pip install WeasyPrint</code></pre>
+<h3 id="mkdocs">mkdocs</h3>
+<p><a href="https://www.mkdocs.org">mkdocs</a> 是技术文档编写工具，可将 Markdown 文档转换为静态网站，适合编写技术文档，例如用户书册、产品介绍说明等。使用命令安装：</p>
+<pre class="shell"><code>pip install mkdocs</code></pre>
+<p><a href="https://squidfunk.github.io/mkdocs-material/">mkdocs-material</a> 是 mkdocs 的材料设计主题，美观而做了很多功能扩展。使用命令安装：</p>
+<pre class="shell"><code>pip install mkdocs-material</code></pre>
+<h2 id="node.js-相关">Node.js 相关</h2>
+<p><a href="https://nodejs.org">Node.js</a> 是 Javascript 运行时。使用命令安装：</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>scoop install nodejs-lts</span></code></pre></div>
+<h3 id="uuid">uuid</h3>
+<p><a href="https://github.com/uuidjs/uuid">uuid</a> 是生成 UUID 的命令行工具。使用命令安装：</p>
+<pre class="shell"><code>npm install -g uuid</code></pre>
+<h3 id="capture-website-cli">capture-website-cli</h3>
+<p><a href="https://github.com/sindresorhus/capture-website-cli">capture-website-cli</a> 是截取网页的命令行工具。使用命令安装：</p>
+<pre class="shell"><code>npm install -g capture-website-cli</code></pre>
+<h3 id="nativefier">nativefier</h3>
+<p><a href="https://github.com/jiahaog/nativefier">nativefier</a> 将网页转换为原生桌面应用程序。使用命令安装：</p>
+<pre class="shell"><code>npm install -g nativefier</code></pre>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2020-06-12-windows-apps/nativefier-walkthrough.gif" alt="nativefier 演示" /><figcaption aria-hidden="true">nativefier 演示</figcaption>
+</figure>
+<h3 id="trash-cli">trash-cli</h3>
+<p>使用 <a href="https://github.com/sindresorhus/trash-cli">trash</a> 命令将文件删除到回收站，而不是像 rm 将文件彻底删除。使用命令安装：</p>
+<pre class="shell"><code>npm install -g trash-cli</code></pre>
+<h2 id="watchexec">watchexec</h2>
+<p><a href="https://github.com/watchexec/watchexec">watchexec</a> 可在监控到文件变化后自动执行命令。使用命令安装：</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>scoop install watchexec</span></code></pre></div>
+<h2 id="speedcrunch">SpeedCrunch</h2>
+<p><a href="http://speedcrunch.org/">SpeedCrunch</a> 是一个更好用的计算器，支持很多数学函数、变量，使用起来特别简单。使用命令安装：</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>scoop install speedcrunch</span></code></pre></div>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2020-06-12-windows-apps/speedcrunch.gif" alt="SpeedCrunch 演示" /><figcaption aria-hidden="true">SpeedCrunch 演示</figcaption>
+</figure>
+<h2 id="geek-uninstaller">Geek Uninstaller</h2>
+<p><a href="https://geekuninstaller.com/">Geek Uninstaller</a> 可以在卸载应用时顺便清理残留的文件和注册表。使用命令安装：</p>
+<pre class="shell"><code>scoop install geekuninstaller</code></pre>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2020-06-12-windows-apps/geekuninstaller_screen.png" alt="Geek Uninstaller" /><figcaption aria-hidden="true">Geek Uninstaller</figcaption>
+</figure>
+<h2 id="figma">Figma</h2>
+<p><a href="https://www.figma.com/downloads/">Figma</a> 是一个 Web UI/UX 设计软件，对标的是 <a href="https://sketchapp.com">Sketch</a>，但 Sketch 只支持 macOS，Figma 因为可以运行在浏览器中，所以可以跨平台。而且 Figma 可以免费使用，虽然功能有受限。</p>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2020-06-12-windows-apps/figma-canvas.png" alt="Figma" /><figcaption aria-hidden="true">Figma</figcaption>
+</figure>
+<h2 id="axure">Axure</h2>
+<p><a href="https://www.axure.com/download">Axure</a> 是国内产品经理必备的工具，用于快速原型设计。</p>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2020-06-12-windows-apps/Axure_9.png" alt="Axure 9" /><figcaption aria-hidden="true">Axure 9</figcaption>
+</figure>
+<h2 id="affinity-photo">Affinity Photo</h2>
+<p><a href="https://store.serif.com/zh-cn/update/windows/photo/1/">Affinity Photo</a> 是对标 Photoshop 的产品，比 Photoshop 更易使用，性能更优。</p>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2020-06-12-windows-apps/photo_1.7_focusstack_windows.png" alt="Affinity Photo" /><figcaption aria-hidden="true">Affinity Photo</figcaption>
+</figure>
+<h2 id="affinity-designer">Affinity Designer</h2>
+<p><a href="https://store.serif.com/zh-cn/update/windows/designer/1/">Affinity Designer</a> 是对标 Illustrator 的产品，比 Illustrator 更易使用，性能更优。</p>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2020-06-12-windows-apps/designer_1.7_artboards_windows.png" alt="Affinity Designer" /><figcaption aria-hidden="true">Affinity Designer</figcaption>
+</figure>
+<h2 id="affinity-publisher">Affinity Publisher</h2>
+<p><a href="https://store.serif.com/zh-cn/update/windows/publisher/1/">Affinity Publisher</a> 是对标 InDesign 的产品，比 InDesign 更易使用，性能更优，但功能暂时比 InDesign 少，对中文排版支持不太好。</p>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2020-06-12-windows-apps/CHN-Windows-Affinity-Publisher-MasterPages.jpg" alt="Affinity Publisher" /><figcaption aria-hidden="true">Affinity Publisher</figcaption>
+</figure>
+<h2 id="virtualbox">VirtualBox</h2>
+<p><a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a> 是免费开源的虚拟机，支持各桌面操作系统。也可以使用同样免费的 <a href="https://www.vmware.com/products/workstation-player.html">VMWare Workstation Player</a>。</p>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2020-06-12-windows-apps/Ubuntu_14.04_on_Windows_7.png" alt="在 Windows VirtualBox 中运行 Ubuntu 14.04" /><figcaption aria-hidden="true">在 Windows VirtualBox 中运行 Ubuntu 14.04</figcaption>
+</figure>
+<h2 id="sizer">Sizer</h2>
+<p><a href="http://www.brianapps.net/sizer4/">Sizer</a> 可以将应用窗口设定为固定的大小。在你要截图一个应用时，你可以先把窗口调整好大小，这样截出来的图无需再去裁剪。</p>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2020-06-12-windows-apps/sizer.png" alt="Sizer" /><figcaption aria-hidden="true">Sizer</figcaption>
+</figure>
+<p>©2020 David Peng | 采用 <a href="https://pandoc.org/" target="_blank">Pandoc</a> 搭建</p>
+</body>
+</html>

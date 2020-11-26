@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="David Peng" />
+  <meta name="dcterms.date" content="2016-07-02" />
+  <title>DP – 统计分析设计</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      word-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <link rel="shortcut icon" type="image/png" href="https://cdn.jsdelivr.net/gh/duzyn/img/favicon.png"/>
+  <link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/duzyn/img/apple-touch-icon.png">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-18121046-9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-18121046-9');
+  </script>
+</head>
+<body>
+<div style="text-align:center">
+  <a href="/index.html">
+    <img src="https://cdn.jsdelivr.net/gh/duzyn/img/apple-touch-icon.png" alt="DP" style="height:48px;width:48px;border-radius: 24px;">
+  </a>
+</div>
+<header id="title-block-header">
+<h1 class="title">统计分析设计</h1>
+<p class="author">David Peng</p>
+<p class="date">2016-07-02</p>
+</header>
+<p>​统计分析系统的主要功能是产品运营数据的采集、存储、处理和展示。整个流程一般是由客户端采集，采集完成后的数据存储在数据仓库，再对数据进行清洗、聚合等处理，存储到关系型数据库中，然后将这些数据以交互大盘的形式在网页上或者应用上展示，展示的形式有数据图和数据表。最终实现将产品的运营情况以直观、简介、可视化的方式展现给用户，实现数据的价值。</p>
+<p>运营统计的指标常见的有以下几个：新增用户、活跃用户、累计用户、安装量、更新量、留存率、崩溃日志、崩溃率、各种事件的统计次数、页面停留时间、转换率等。各指标的定义可以见下文的术语解释。</p>
+<p>在统计一个产品时，很重要的几个产品方面包括：渠道、版本、区域、语言、操作系统、硬件。渠道可以表示产品发行渠道的质量，版本可以统计产品的不同版本之间的用户使用情况，区域可以分析产品的用户的地理位置，语言在国际化的产品中可以统计用户的地理分布，操作系统可以统计用户所使用的操作系统平台的比例，硬件可以统计用户使用最多的硬件是什么，应用对硬件做针对性的优化。这其中尤为关键的两个方面是渠道和版本。</p>
+<h2 id="术语解释">术语解释</h2>
+<dl>
+<dt>指标</dt>
+<dd>又叫统计指标，是反映同类现象总体数量特征的概念及其具体数值。
+</dd>
+<dt>过滤器</dt>
+<dd>从各项分类中选出特定分类的数据，并展示其图表。
+</dd>
+<dt>新增用户</dt>
+<dd><p>新增用户是在指定的时间段内安装并启动了应用的新用户，而不是仅仅安装了应用的用户。新增用户由唯一的设备 ID 识别（不同的设备有不同的设备 ID）。新增用户是应用的用户增长情况的重要表征，如果一个渠道的新增用户量/下载量的数值很小，说明此渠道的质量不佳。在很多情况下，好视通统计分析中的“新增用户”等于“激活用户”。</p>
+<p>卸载再安装的设备，不会算作一个新增用户。</p>
+</dd>
+<dt>累计用户</dt>
+<dd>此数值统计了到某时间启动过应用的所有用户数量，即截止到该时期所有的新用户数。累计用户数是表征应用的用户数量的重要指标。但是此数据并不能表示一段时间内的活跃用户数量；流失用户数 = 累计用户 – 活跃用户数。
+</dd>
+<dt>活跃用户</dt>
+<dd><p>活跃用户是指在指定日期时间段内至少启动了应用一次的用户。如果时间段大于一天，并且某个用户在这个时间段启动应用若干次，那么这个用户将会被记为这个时间段内一个活跃用户。这种去掉重复用户的过程称为去重，去重的依据是设备 ID。活跃用户的数量反应了应用对于用户的粘度，一般情况下，这个数字越高说明用户越依赖于此应用。</p>
+<p>活跃用户一般有以下几种：日活跃用户（简称日活）、周活跃用户（简称周活）、月活跃用户（简称月活）。</p>
+</dd>
+<dt>版本</dt>
+<dd><p>软件开发者用于标识程序处于某个阶段的数字。版本号随着公开放行后不断增大。</p>
+<p>每个渠道下面都有不同的版本。</p>
+</dd>
+<dt>事件</dt>
+<dd>事件是一个操作行为，需在代码中定义此行为。（来自友盟术语解释）
+</dd>
+<dt>今日</dt>
+<dd>从当天 00:00 至 23:59 的时间段。
+</dd>
+<dt>本周</dt>
+<dd>从当周的周一 00:00 至 周日 23:59 的时间段。周的开始日期可能是周一或周日。在好视通分析中周的开始日是周一。
+</dd>
+<dt>本月</dt>
+<dd>从当月的 1 日 00:00 至 月末 23:59 的时间段。月末日可能是 28、29、30、31 日。
+</dd>
+<dt>过去 7 天</dt>
+<dd>从 7 天前的 00:00 至当前时间的时间段。比如现在是 12 月 23 日 10:50，则过去 7 天指 12 月 17 日 00:00 至 12 月 23 日 10:50。
+</dd>
+<dt>过去 30 天</dt>
+<dd>从 30 天前的 00:00 至当前时间的时间段。比如现在是 12 月 23 日 10:50，则过去 30 天指 11 月 24 日 00:00 至 12 月 23 日 10:50。
+</dd>
+<dt>上周</dt>
+<dd>从上周的周一 00:00 至 周日 23:59 的时间段。周的开始日期可能是周一或周日。在好视通分析中周的开始日是周一。
+</dd>
+<dt>上月</dt>
+<dd>从上月的 1 日 00:00 至 月末 23:59 的时间段。
+</dd>
+</dl>
+<h2 id="产品的目标">产品的目标</h2>
+<p>产品的目标是改善客户端和服务器应用的端到端的用户体验，提高用户满意度，提升产品竞争力。</p>
+<h2 id="产品的定位">产品的定位</h2>
+<p>产品的定位是内部 IT 系统和工具，用于辅助产品开发团队根据用户反馈解决应用的性能问题，提高客户满意度。</p>
+<p>产品可以量化反映应用的用户体验，可供相关角色的用户查看，帮助开发人员分析问题，并指导开发团队改进产品。</p>
+<h2 id="目标用户和需求">目标用户和需求</h2>
+<p>产品的目标用户是公司内部的高层、客户成功、运维、产品经理、开发团队。见 <span class="citation" data-cites="tbl:目标用户角色和需求">[@tbl:目标用户角色和需求]</span></p>
+<table>
+<caption>目标用户角色和需求 {#tbl:目标用户角色和需求}</caption>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>角色</th>
+<th>需求</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>高层</td>
+<td>了解各个应用的整体的用户体验情况，查看应用的指标按版本、按时间是否有改善。</td>
+</tr>
+<tr class="even">
+<td>客户成功</td>
+<td>在客户反馈问题时，可以通过系统去搜索客户对应的问题，并做基本的分析后回复客户。不能解决的问题转给研发处理。</td>
+</tr>
+<tr class="odd">
+<td>运维</td>
+<td>了解和监控服务器应用的性能指标的情况。在客户反馈问题时，可以通过系统去搜索客户对应的问题，并做基本的分析后回复客户。不能解决的问题转给研发处理。</td>
+</tr>
+<tr class="even">
+<td>产品经理</td>
+<td>了解自己负责的应用的整体的用户体验情况，查看应用的指标按版本按时间是否有改善。制定指标目标，规划版本以提升。</td>
+</tr>
+<tr class="odd">
+<td>开发团队</td>
+<td>根据高层、产品经理规划的指标目标，分析当前的指标现状的原因，编写代码改善指标。对客户成功和运维反馈的问题，筛选出来，查看上传的日志并分析和解决问题。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="指标分类">指标分类</h2>
+<p>指标的来源是本产品的用户提出的需求，这些需求由产品经理带领团队提炼成可量化的指标。</p>
+<p>应用的指标按端可分为客户端应用（C或B）和服务器应用（S）。每个应用的指标又可以分为业务指标、性能指标和音视频指标。业务指标是衡量跨多个应用的业务的指标，例如登录进会议室的业务，需要使用链路追踪来提升。性能指标是衡量应用本身的指标，例如应用的崩溃和页面加载性能，需要使用应用监控来提升。音视频指标是衡量跨多个应用的 <em>音视频业务</em> 的指标，例如视频的丢包，需要自研来提升。</p>
+<h2 id="指标的业务流程">指标的业务流程</h2>
+<p>描述每个指标的端到端闭环流程，如何帮助开发团队发现问题、分析问题、解决问题、验证问题是否解决。</p>
+<p>整个流程大致如下：在产品中植入采集SDK → 采集数据到数据仓库 → 清洗数据 → 分析数据 → 用户在 Web 前端查看数据、对比指标、制作报表 → 设置指标告警规则 → 收到告警邮件 → 产品带领开发团队查看、分析问题 → 解决问题 → 发布新版本 → 优化或者新增数据采集 → 采集数据到数据仓库。</p>
+<p>指标制定后，需要在日常工作中执行下去。产品经理可以将关键的指标纳入季度规划，做为关键任务或非关键任务。QA 跟踪检查指标的达成情况，并统计后做为绩效考核的依据。</p>
+<h2 id="设计">设计</h2>
+<p>系统的信息架构见 <span class="citation" data-cites="fig:系统信息架构">[@fig:系统信息架构]</span>：</p>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/系统信息架构.png" id="fig:系统信息架构" alt="系统的信息架构" /><figcaption aria-hidden="true">系统的信息架构</figcaption>
+</figure>
+<p>统计分析系统的页面设计总体最简的信息架构包含：</p>
+<ul>
+<li>登录页：系统的用户登录系统用。应用运营数据是企业机密信息，应有登录授权的用户才能访问。</li>
+<li>概览页：展示系统整体的各项指标和应用的各项指标的概况。点击概览指标可以查看具体的指标。</li>
+<li>统计分析页：具体查看应用的指标情况和设置应用的信息。</li>
+<li>设置：系统设置，包括账号、应用、渠道等。</li>
+<li>告警通知：指标在触发告警规则后发送告警通知，在系统在可以接收、查看和处理通知。</li>
+<li>帮助：帮助手册，用于新用户学习使用。</li>
+</ul>
+<h3 id="概览页">概览页</h3>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/概览.png" id="fig:概览" alt="概览" /><figcaption aria-hidden="true">概览</figcaption>
+</figure>
+<p>在概览页（见<span class="citation" data-cites="fig:概览">[@fig:概览]</span>）的上方显示应用用户指标、应用业务指标、应用性能指标的日/周/月的<em>各应用整体平均值</em>，同时显示日/周/月的同比增降百分比情况，上升使用红色的箭头，下降使用绿色的箭头，这是借鉴股价涨跌的颜色表示方法。点击概览的指标可以跳到<em>第一个</em>应用的具体指标页查看。</p>
+<p>在概览页的下方显示各应用的各指标的日/周/月的<em>应用整体平均值</em>，同时显示日/周/月的同比增降百分比情况。点击应用的具体的值，可以跳到该应用的具体指标页查看。</p>
+<p>点击“日/周/月”的切换器可以查看整体和各应用的各指标的情况。</p>
+<h3 id="指标页">指标页</h3>
+<p>一个指标页面的页面结构见 <span class="citation" data-cites="fig:页面结构">[@fig:页面结构]</span>：</p>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/页面结构.png" id="fig:页面结构" alt="页面结构" /><figcaption aria-hidden="true">页面结构</figcaption>
+</figure>
+<p>以登录入会时长为例，其他指标的基本规则和此指标类似。</p>
+<p>指标页是重中之重，是系统的主要内容。指标页的页面结构分为上中下三层，中间为主要内容区，上方页眉为系统级的主导航区（主导航），下方页脚为辅助信息，是非必要的。</p>
+<p>指标页的内容区的左侧为应用级的导航区（次导航），分为各应用指标类和应用设置。右侧为指标的展示，指标的展示主体内容为图和表，再辅以必需的页面标题、数据的工具栏、图标题、图示例、表格和翻页工具栏。</p>
+<p>对数据的整体操作体现在工具栏上。工具栏分为左右两侧，左侧为对数据指标进行不同查看方式的处理，包括查看依据、过滤器和导出数据，右侧为指标的按时间显示方式，包括按日/周/月显示和选择起止日期。</p>
+<p>查看依据是指标的不同维度，这些维度都是查看指标的方式，以新增用户为例，维度有渠道、版本、区域、语言、操作系统、硬件等，以登录入会时长为例，维度有版本、企业 ID。</p>
+<p>查看依据：在查看依据中显示的是指标的维度，可以以此聚合数据。聚合后的数据，值从大到小排列，默认在图上显示前 3 个。如下图是以版本查看登录入会时长的数据情况。在下方的表中可以选择更多查看依据的值，勾中一个则在图中显示一条线。</p>
+<p>下例中，<span class="citation" data-cites="fig:崩溃次数指标页">[@fig:崩溃次数指标页]</span> 展示了应用的崩溃次数整体情况，<span class="citation" data-cites="fig:登录入会时长">[@fig:登录入会时长]</span> 展示了以版本为查看依据查看登录入会时长。</p>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/崩溃次数.png" id="fig:崩溃次数指标页" alt="崩溃次数" /><figcaption aria-hidden="true">崩溃次数</figcaption>
+</figure>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/登录入会时长.png" id="fig:登录入会时长" alt="以版本为查看依据查看登录入会时长" /><figcaption aria-hidden="true">以版本为查看依据查看登录入会时长</figcaption>
+</figure>
+<p>过滤器：可以以维度为过滤器来查看图表，点击“添加过滤器”添加一个过滤器，如下图是以一个版本为过滤器。在添加一个过滤器后，还可以添加其他过滤器。见 <span class="citation" data-cites="fig:过滤器">[@fig:过滤器]</span></p>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/过滤器.png" id="fig:过滤器" alt="以版本为过滤器" /><figcaption aria-hidden="true">以版本为过滤器</figcaption>
+</figure>
+<p>在过滤后显示结果的图表。点击“X”可以移除过滤器。见 <span class="citation" data-cites="fig:过滤器结果">[@fig:过滤器结果]</span></p>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/过滤器结果.png" id="fig:过滤器结果" alt="过滤版本 3.30 的登录入会时长" /><figcaption aria-hidden="true">过滤版本 3.30 的登录入会时长</figcaption>
+</figure>
+<p>导出：所有图表都支持导出数据为 CSV 文件。导出文件的内容和下方的表一样。</p>
+<h3 id="查询页">查询页</h3>
+<p>以调用链查询页为例，其他指标的查询页与此类似。</p>
+<p>查询页是对结构化的数据进行查询的页面，用于用户对数据的检索。查询页的设计上方是筛选区，可以按所有字段进行数据的筛选，下方是表格，展示每条数据的详细信息。</p>
+<p>应用业务指标需要使用链路追踪来改进，提供一个统一的地方查询调用链。开发人员可以根据用户反馈的问题情况查找相应的调用链，并分析问题。</p>
+<p>调用链表格的字段有以下，且支持以这些字段筛选：</p>
+<ul>
+<li>TraceID</li>
+<li>时间</li>
+<li>Span 名称</li>
+<li>耗时（毫秒）</li>
+<li>IP</li>
+<li>应用名称</li>
+<li>应用版本</li>
+<li>用户 ID</li>
+<li>企业 ID</li>
+</ul>
+<p>下例中，<span class="citation" data-cites="fig:调用链查询">[@fig:调用链查询]</span> 展示了调用链查询，<span class="citation" data-cites="fig:崩溃查询">[@fig:崩溃查询]</span> 展示了崩溃查询。</p>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/调用链查询.png" id="fig:调用链查询" alt="调用链查询" /><figcaption aria-hidden="true">调用链查询</figcaption>
+</figure>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/崩溃查询.png" id="fig:崩溃查询" alt="崩溃查询" /><figcaption aria-hidden="true">崩溃查询</figcaption>
+</figure>
+<h3 id="详情页">详情页</h3>
+<p>以调用链详情页为例，其他指标的查询页与此类似。</p>
+<p>点击表格中的主要属性（例如 TraceID）可以查看详情，字段有：</p>
+<ul>
+<li>应用名称</li>
+<li>Span 名称</li>
+<li>日志产生时间</li>
+<li>状态</li>
+<li>IP</li>
+<li>时间轴（耗时）</li>
+</ul>
+<p>下例中，<span class="citation" data-cites="fig:调用链详情">[@fig:调用链详情]</span> 展示了调用链详情，<span class="citation" data-cites="fig:崩溃详情">[@fig:崩溃详情]</span> 展示了崩溃详情。</p>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/调用链详情.png" id="fig:调用链详情" alt="调用链详情" /><figcaption aria-hidden="true">调用链详情</figcaption>
+</figure>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/崩溃详情.png" id="fig:崩溃详情" alt="崩溃详情" /><figcaption aria-hidden="true">崩溃详情</figcaption>
+</figure>
+<p>查看 Span 详情：鼠标悬浮在 Span 名称上可以查看 Span 的详情，字段有：</p>
+<h3 id="告警设置">告警设置</h3>
+<p>以登录入会时长为例，其他指标的基本规则和此指标类似。</p>
+<p>在应用设置中点击“告警设置”，打开告警设置。如 <span class="citation" data-cites="fig:告警设置">[@fig:告警设置]</span></p>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/告警设置.png" id="fig:告警设置" alt="告警设置" /><figcaption aria-hidden="true">告警设置</figcaption>
+</figure>
+<p>添加告警规则（见 <span class="citation" data-cites="fig:添加告警规则">[@fig:添加告警规则]</span>）：点击“添加告警规则”，填写告警规则，设定好后系统在触发规则后，<em>实时</em>自动发送<em>邮件</em>给通知对象。</p>
+<ul>
+<li><p>应用名称</p></li>
+<li><p>告警名称：自己输一个和规则相关的告警名称，不能重复</p></li>
+<li><p>告警规则：选择“同时满足以下规则”或“满足以下任一规则”中的一个，即是“与”和“或”的差别。</p>
+<p>告警规则可以添加一个或多个。每个规则有以下字段：</p>
+<ul>
+<li>最近 N 分钟：数字</li>
+<li>指标：已人为定义好的可选的指标</li>
+<li>计算方式：求和、平均值等，根据实际情况来</li>
+<li>操作符：有 <span class="math inline">\(=\)</span>, <span class="math inline">\(&lt;\)</span>, <span class="math inline">\(&gt;\)</span>, <span class="math inline">\(\leq\)</span>, <span class="math inline">\(\geq\)</span>, <span class="math inline">\(\neq\)</span> 等</li>
+<li>阈值：数字</li>
+</ul></li>
+<li><p>通知对象：输入邮箱，多个邮箱以换行分隔</p></li>
+</ul>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/添加告警规则.png" id="fig:添加告警规则" alt="添加告警规则" /><figcaption aria-hidden="true">添加告警规则</figcaption>
+</figure>
+<p>在添加告警规则后，点击“运行”即可开启告警监控。再点击“停止”即可停止告警监控。</p>
+<p>查看告警记录（见 <span class="citation" data-cites="fig:查看告警记录">[@fig:查看告警记录]</span>）：点击“查看告警记录”可以打开查看此告警规则触发告警的记录。字段有：</p>
+<ul>
+<li>发生时间：YYYY-MM-DD HH:MM:SS</li>
+<li>告警内容：触发的值以红色标出</li>
+<li>告警名称：</li>
+<li>告警规则：</li>
+</ul>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/查看告警记录.png" id="fig:查看告警记录" alt="查看告警记录" /><figcaption aria-hidden="true">查看告警记录</figcaption>
+</figure>
+<p>©2020 David Peng | 采用 <a href="https://pandoc.org/" target="_blank">Pandoc</a> 搭建</p>
+</body>
+</html>
