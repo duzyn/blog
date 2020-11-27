@@ -229,7 +229,7 @@
 <h2 id="目标用户和需求">目标用户和需求</h2>
 <p>产品的目标用户是公司内部的高层、客户成功、运维、产品经理、开发团队。见</p>
 <table>
-<caption>目标用户角色和需求 {#tbl:目标用户角色和需求}</caption>
+<caption>目标用户角色和需求</caption>
 <colgroup>
 <col style="width: 13%" />
 <col style="width: 86%" />
@@ -273,7 +273,7 @@
 <h2 id="设计">设计</h2>
 <p>系统的信息架构见：</p>
 <figure>
-<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/系统信息架构.png" id="fig:系统信息架构" alt="系统的信息架构" /><figcaption aria-hidden="true">系统的信息架构</figcaption>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/系统信息架构.png" alt="系统的信息架构" /><figcaption aria-hidden="true">系统的信息架构</figcaption>
 </figure>
 <p>统计分析系统的页面设计总体最简的信息架构包含：</p>
 <ul>
@@ -286,7 +286,7 @@
 </ul>
 <h3 id="概览页">概览页</h3>
 <figure>
-<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/概览.png" id="fig:概览" alt="概览" /><figcaption aria-hidden="true">概览</figcaption>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/概览.png" alt="概览" /><figcaption aria-hidden="true">概览</figcaption>
 </figure>
 <p>在概览页的上方显示应用用户指标、应用业务指标、应用性能指标的日/周/月的<em>各应用整体平均值</em>，同时显示日/周/月的同比增降百分比情况，上升使用红色的箭头，下降使用绿色的箭头，这是借鉴股价涨跌的颜色表示方法。点击概览的指标可以跳到<em>第一个</em>应用的具体指标页查看。</p>
 <p>在概览页的下方显示各应用的各指标的日/周/月的<em>应用整体平均值</em>，同时显示日/周/月的同比增降百分比情况。点击应用的具体的值，可以跳到该应用的具体指标页查看。</p>
@@ -294,7 +294,7 @@
 <h3 id="指标页">指标页</h3>
 <p>一个指标页面的页面结构见：</p>
 <figure>
-<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/页面结构.png" id="fig:页面结构" alt="页面结构" /><figcaption aria-hidden="true">页面结构</figcaption>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/页面结构.png" alt="页面结构" /><figcaption aria-hidden="true">页面结构</figcaption>
 </figure>
 <p>以登录入会时长为例，其他指标的基本规则和此指标类似。</p>
 <p>指标页是重中之重，是系统的主要内容。指标页的页面结构分为上中下三层，中间为主要内容区，上方页眉为系统级的主导航区（主导航），下方页脚为辅助信息，是非必要的。</p>
@@ -304,18 +304,18 @@
 <p>查看依据：在查看依据中显示的是指标的维度，可以以此聚合数据。聚合后的数据，值从大到小排列，默认在图上显示前 3 个。如下图是以版本查看登录入会时长的数据情况。在下方的表中可以选择更多查看依据的值，勾中一个则在图中显示一条线。</p>
 <p>下例中，展示了应用的崩溃次数整体情况，展示了以版本为查看依据查看登录入会时长。</p>
 <figure>
-<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/崩溃次数.png" id="fig:崩溃次数指标页" alt="崩溃次数" /><figcaption aria-hidden="true">崩溃次数</figcaption>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/崩溃次数.png" alt="崩溃次数" /><figcaption aria-hidden="true">崩溃次数</figcaption>
 </figure>
 <figure>
-<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/登录入会时长.png" id="fig:登录入会时长" alt="以版本为查看依据查看登录入会时长" /><figcaption aria-hidden="true">以版本为查看依据查看登录入会时长</figcaption>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/登录入会时长.png" alt="以版本为查看依据查看登录入会时长" /><figcaption aria-hidden="true">以版本为查看依据查看登录入会时长</figcaption>
 </figure>
 <p>过滤器：可以以维度为过滤器来查看图表，点击“添加过滤器”添加一个过滤器，如下图是以一个版本为过滤器。在添加一个过滤器后，还可以添加其他过滤器。见</p>
 <figure>
-<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/过滤器.png" id="fig:过滤器" alt="以版本为过滤器" /><figcaption aria-hidden="true">以版本为过滤器</figcaption>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/过滤器.png" alt="以版本为过滤器" /><figcaption aria-hidden="true">以版本为过滤器</figcaption>
 </figure>
 <p>在过滤后显示结果的图表。点击“X”可以移除过滤器。见</p>
 <figure>
-<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/过滤器结果.png" id="fig:过滤器结果" alt="过滤版本 3.30 的登录入会时长" /><figcaption aria-hidden="true">过滤版本 3.30 的登录入会时长</figcaption>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/过滤器结果.png" alt="过滤版本 3.30 的登录入会时长" /><figcaption aria-hidden="true">过滤版本 3.30 的登录入会时长</figcaption>
 </figure>
 <p>导出：所有图表都支持导出数据为 CSV 文件。导出文件的内容和下方的表一样。</p>
 <h3 id="查询页">查询页</h3>
@@ -336,10 +336,10 @@
 </ul>
 <p>下例中，展示了调用链查询，展示了崩溃查询。</p>
 <figure>
-<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/调用链查询.png" id="fig:调用链查询" alt="调用链查询" /><figcaption aria-hidden="true">调用链查询</figcaption>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/调用链查询.png" alt="调用链查询" /><figcaption aria-hidden="true">调用链查询</figcaption>
 </figure>
 <figure>
-<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/崩溃查询.png" id="fig:崩溃查询" alt="崩溃查询" /><figcaption aria-hidden="true">崩溃查询</figcaption>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/崩溃查询.png" alt="崩溃查询" /><figcaption aria-hidden="true">崩溃查询</figcaption>
 </figure>
 <h3 id="详情页">详情页</h3>
 <p>以调用链详情页为例，其他指标的查询页与此类似。</p>
@@ -354,17 +354,17 @@
 </ul>
 <p>下例中，展示了调用链详情，展示了崩溃详情。</p>
 <figure>
-<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/调用链详情.png" id="fig:调用链详情" alt="调用链详情" /><figcaption aria-hidden="true">调用链详情</figcaption>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/调用链详情.png" alt="调用链详情" /><figcaption aria-hidden="true">调用链详情</figcaption>
 </figure>
 <figure>
-<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/崩溃详情.png" id="fig:崩溃详情" alt="崩溃详情" /><figcaption aria-hidden="true">崩溃详情</figcaption>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/崩溃详情.png" alt="崩溃详情" /><figcaption aria-hidden="true">崩溃详情</figcaption>
 </figure>
 <p>查看 Span 详情：鼠标悬浮在 Span 名称上可以查看 Span 的详情，字段有：</p>
 <h3 id="告警设置">告警设置</h3>
 <p>以登录入会时长为例，其他指标的基本规则和此指标类似。</p>
 <p>在应用设置中点击“告警设置”，打开告警设置。如</p>
 <figure>
-<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/告警设置.png" id="fig:告警设置" alt="告警设置" /><figcaption aria-hidden="true">告警设置</figcaption>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/告警设置.png" alt="告警设置" /><figcaption aria-hidden="true">告警设置</figcaption>
 </figure>
 <p>添加告警规则：点击“添加告警规则”，填写告警规则，设定好后系统在触发规则后，<em>实时</em>自动发送<em>邮件</em>给通知对象。</p>
 <ul>
@@ -382,7 +382,7 @@
 <li><p>通知对象：输入邮箱，多个邮箱以换行分隔</p></li>
 </ul>
 <figure>
-<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/添加告警规则.png" id="fig:添加告警规则" alt="添加告警规则" /><figcaption aria-hidden="true">添加告警规则</figcaption>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/添加告警规则.png" alt="添加告警规则" /><figcaption aria-hidden="true">添加告警规则</figcaption>
 </figure>
 <p>在添加告警规则后，点击“运行”即可开启告警监控。再点击“停止”即可停止告警监控。</p>
 <p>查看告警记录：点击“查看告警记录”可以打开查看此告警规则触发告警的记录。字段有：</p>
@@ -393,8 +393,8 @@
 <li>告警规则：</li>
 </ul>
 <figure>
-<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/查看告警记录.png" id="fig:查看告警记录" alt="查看告警记录" /><figcaption aria-hidden="true">查看告警记录</figcaption>
+<img src="https://cdn.jsdelivr.net/gh/duzyn/img/images/2016-07-02-analytics-design/查看告警记录.png" alt="查看告警记录" /><figcaption aria-hidden="true">查看告警记录</figcaption>
 </figure>
-<p>©2020 David Peng | 采用 <a href="https://pandoc.org/" target="_blank">Pandoc</a> 搭建</p>
+<p>©2020 David Peng ♥ 采用 <a href="https://pandoc.org/" target="_blank">Pandoc</a> 搭建</p>
 </body>
 </html>
