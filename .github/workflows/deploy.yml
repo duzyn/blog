@@ -1,0 +1,28 @@
+name: Build and Deploy
+on: push
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+
+      - name: Setup Pandoc
+        uses: r-lib/actions/setup-pandoc@v1
+        with:
+          pandoc-version: '2.11.2'
+
+      - name: Build
+        run: |
+          mkdir build
+          cp CNAME build/
+          cd posts
+          for f in *.md; do pandoc "$f" -d ../html5.yml -o "../build/${f%.md}.html"; done
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: build
+          CLEAN: true

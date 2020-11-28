@@ -1,0 +1,29 @@
+from: markdown+east_asian_line_breaks+tex_math_double_backslash
+to: html5
+standalone: true
+shift-heading-level-by: 1
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+variables:
+  title-prefix: DP
+  header-includes: |
+    <link rel="shortcut icon" type="image/png" href="https://cdn.jsdelivr.net/gh/duzyn/img/favicon.png"/>
+    <link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/duzyn/img/apple-touch-icon.png">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-18121046-9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-18121046-9');
+    </script>
+  include-before: |
+    <div style="text-align:center">
+      <a href="/index.html">
+        <img src="https://cdn.jsdelivr.net/gh/duzyn/img/apple-touch-icon.png" alt="DP" style="height:48px;width:48px;border-radius: 24px;">
+      </a>
+    </div>
+  include-after: |
+    <p>©2020 David Peng ♥ 采用 <a href="https://pandoc.org/" target="_blank">Pandoc</a> 搭建</p>
+metadata:
+  lang: zh-CN
