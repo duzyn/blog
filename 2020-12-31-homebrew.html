@@ -189,7 +189,7 @@ export HOMEBREW_BOTTLE_DOMAIN=&quot;https://mirrors.tuna.tsinghua.edu.cn/homebre
     curl -fsSL https://cdn.jsdelivr.net/gh/Homebrew/install@master/install.sh |
     sed &#39;s|^BREW_REPO=.*$|BREW_REPO=&quot;https://github.com.cnpmjs.org/Homebrew/brew&quot;|g&#39;
 )&quot;</code></pre>
-<p>然后在用一个脚本自动设置几个常用软件库的源地址为代理地址，并自动安装。</p>
+<p>然后再用一个脚本自动设置几个常用软件库的源地址为代理地址，并自动安装。</p>
 <pre><code>BREW_TAPS=&quot;$(brew tap)&quot;
 for tap in core cask{,-fonts,-drivers,-versions}; do
     if echo &quot;$BREW_TAPS&quot; | grep -qE &quot;^homebrew/${tap}\$&quot;; then
