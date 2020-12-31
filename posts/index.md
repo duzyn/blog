@@ -1,6 +1,11 @@
 ---
 title: DP
+published: true
 ---
+
+# [使用 Homebrew](./2020-12-31-homebrew.html)
+
+在国内使用 Homebrew。
 
 # [使用 Xpdf 将 PDF 转为 PNG 图片](./2020-07-23-xpdf-tools-convert-pdf-to-png.html)
 
