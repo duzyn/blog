@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>DP – 2020-12-31-homebrew</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      word-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <link rel="shortcut icon" type="image/png" href="https://cdn.jsdelivr.net/gh/duzyn/img/favicon.png"/>
+  <link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/duzyn/img/apple-touch-icon.png">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-18121046-9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-18121046-9');
+  </script>
+</head>
+<body>
+<div style="text-align:center">
+  <a href="/index.html">
+    <img src="https://cdn.jsdelivr.net/gh/duzyn/img/apple-touch-icon.png" alt="DP" style="height:48px;width:48px;border-radius: 24px;">
+  </a>
+</div>
+<h2 id="homebrew">Homebrew</h2>
+<p>Homebrew 是 macOS（或 Linux）缺失的软件包的管理器，在 Mac 用户中流传很广。<a href="https://brew.sh/index_zh-cn">Homebrew 官网（简体中文）</a> 上介绍安装方法很简单，就一句话：</p>
+<pre><code>/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;</code></pre>
+<p>将以上命令粘贴至终端。脚本会在执行前暂停，并说明它将做什么。</p>
+<p>这条命令很简单，先下载一个 install.sh Shell 脚本，然后用 Bash 运行它。安装步骤都放在 install.sh 这个文件中。实际国内用户在安装时会一直卡在第一个阶段，下载脚本的过程，原因就是在国内访问 Github 很慢，而 raw.githubusercontent.com 是放 RAW 文件的，服务器是在 AWS 上，国内访问更慢。即使你成功下载了这个脚本，因为毕竟很小，在执行这个脚本时会从 Github 克隆库，此时速度也会很慢。所以一般是安装不成功的。</p>
+<p>有一个方法是买 VPN，然后通过代理服务器完成安装。缺点有以下几点：一、VPN 的速度不快，越快价格越贵。二、开 VPN 后会影响全局，所有上网都走代理，在访问国内网站时会变慢。三、花钱。</p>
+<p>有更好的方法是使用国内的 Github 代理。这里以 <a href="https://cnpmjs.org/">cnpmjs.org</a> 为例介绍。</p>
+<h2 id="安装-homebrew">安装 Homebrew</h2>
+<p>先设两个环境变量：</p>
+<pre><code>export HOMEBREW_CORE_GIT_REMOTE=&quot;https://github.com.cnpmjs.org/Homebrew/homebrew-core&quot;
+export HOMEBREW_BOTTLE_DOMAIN=&quot;https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles&quot;
+以上是使用清华的源，也可以使用中科大的源
+export HOMEBREW_BOTTLE_DOMAIN=&quot;https://mirrors.ustc.edu.cn/homebrew-bottles&quot;</code></pre>
+<p>可以将以上几行加入 <code>~/.zshrc</code> 或 <code>~/.bash_profile</code> 中。</p>
+<p>将上述命令中的地址变为使用 <a href="https://cdn.jsdelivr.net/gh/Homebrew/install@master/install.sh">jsDelivr CDN 的地址</a>。jsDelivr CDN 虽然是国外开源的 CDN，但在国内有节点，访问速度还是挺不错的。</p>
+<p>第二步我们需要将脚本中的 <code>BREW_REPO</code> 变量对应的值修改为 cnpmjs.org 的代理地址。cnpmjs 代理的方法特别简单，就是在原地址的 github.com 的后面加上 cnpmjs.org 即可。此处<code>BREW_REPO</code> 变量对应的原值是 <code>https://github.com/Homebrew/brew</code>，改为 <code>https://github.com.cnpmjs.org/Homebrew/brew</code> 即可。改后的安装脚本如下：</p>
+<pre><code>/bin/bash -c &quot;$(
+    curl -fsSL https://github.com/Homebrew/install/raw/master/install.sh |
+    sed &#39;s|^BREW_REPO=.*$|BREW_REPO=&quot;https://github.com.cnpmjs.org/Homebrew/brew&quot;|g&#39;
+)&quot;</code></pre>
+<p>然后在用一个脚本自动设置几个常用软件库的源地址为代理地址，并自动安装。</p>
+<pre><code>BREW_TAPS=&quot;$(brew tap)&quot;
+for tap in core cask{,-fonts,-drivers,-versions}; do
+    if echo &quot;$BREW_TAPS&quot; | grep -qE &quot;^homebrew/${tap}\$&quot;; then
+        # 将已有 tap 的上游设置为本镜像并设置 auto update
+        # 注：原 auto update 只针对托管在 GitHub 上的上游有效
+        git -C &quot;$(brew --repo homebrew/${tap})&quot; remote set-url origin https://github.com.cnpmjs.org/Homebrew/homebrew-${tap}.git
+        git -C &quot;$(brew --repo homebrew/${tap})&quot; config homebrew.forceautoupdate true
+    else   # 在 tap 缺失时自动安装（如不需要请删除此行和下面一行）
+        brew tap --force-auto-update homebrew/${tap} https://github.com.cnpmjs.org/Homebrew/homebrew-${tap}.git
+    fi
+done</code></pre>
+<p>完成后即可使用 Homebrew 来安装、更新 app 了。</p>
+<h2 id="参考资料">参考资料</h2>
+<p>以上脚本基于<a href="https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/">清华大学镜像网站的说明</a>改写。</p>
+<p>©2020 David Peng ♥ 采用 <a href="https://pandoc.org/" target="_blank">Pandoc</a> 搭建</p>
+</body>
+</html>
