@@ -186,7 +186,7 @@ export HOMEBREW_BOTTLE_DOMAIN=&quot;https://mirrors.tuna.tsinghua.edu.cn/homebre
 <p>将上述命令中的地址变为使用 <a href="https://cdn.jsdelivr.net/gh/Homebrew/install@master/install.sh">jsDelivr CDN 的地址</a>。jsDelivr CDN 虽然是国外开源的 CDN，但在国内有节点，访问速度还是挺不错的。</p>
 <p>第二步我们需要将脚本中的 <code>BREW_REPO</code> 变量对应的值修改为 cnpmjs.org 的代理地址。cnpmjs 代理的方法特别简单，就是在原地址的 github.com 的后面加上 cnpmjs.org 即可。此处<code>BREW_REPO</code> 变量对应的原值是 <code>https://github.com/Homebrew/brew</code>，改为 <code>https://github.com.cnpmjs.org/Homebrew/brew</code> 即可。改后的安装脚本如下：</p>
 <pre><code>/bin/bash -c &quot;$(
-    curl -fsSL https://github.com/Homebrew/install/raw/master/install.sh |
+    curl -fsSL https://cdn.jsdelivr.net/gh/Homebrew/install@master/install.sh |
     sed &#39;s|^BREW_REPO=.*$|BREW_REPO=&quot;https://github.com.cnpmjs.org/Homebrew/brew&quot;|g&#39;
 )&quot;</code></pre>
 <p>然后在用一个脚本自动设置几个常用软件库的源地址为代理地址，并自动安装。</p>
