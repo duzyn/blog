@@ -180,8 +180,8 @@
 <p>先设两个环境变量：</p>
 <pre><code>export HOMEBREW_CORE_GIT_REMOTE=&quot;https://github.com.cnpmjs.org/Homebrew/homebrew-core&quot;
 export HOMEBREW_BOTTLE_DOMAIN=&quot;https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles&quot;
-以上是使用清华的源，也可以使用中科大的源
-export HOMEBREW_BOTTLE_DOMAIN=&quot;https://mirrors.ustc.edu.cn/homebrew-bottles&quot;</code></pre>
+# 以上是使用清华的源，也可以使用中科大的源
+# export HOMEBREW_BOTTLE_DOMAIN=&quot;https://mirrors.ustc.edu.cn/homebrew-bottles&quot;</code></pre>
 <p>可以将以上几行加入 <code>~/.zshrc</code> 或 <code>~/.bash_profile</code> 中。</p>
 <p>将上述命令中的地址变为使用 <a href="https://cdn.jsdelivr.net/gh/Homebrew/install@master/install.sh">jsDelivr CDN 的地址</a>。jsDelivr CDN 虽然是国外开源的 CDN，但在国内有节点，访问速度还是挺不错的。</p>
 <p>第二步我们需要将脚本中的 <code>BREW_REPO</code> 变量对应的值修改为 cnpmjs.org 的代理地址。cnpmjs 代理的方法特别简单，就是在原地址的 github.com 的后面加上 cnpmjs.org 即可。此处<code>BREW_REPO</code> 变量对应的原值是 <code>https://github.com/Homebrew/brew</code>，改为 <code>https://github.com.cnpmjs.org/Homebrew/brew</code> 即可。改后的安装脚本如下：</p>
