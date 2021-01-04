@@ -10,7 +10,7 @@ jobs:
       - name: Setup Pandoc
         uses: r-lib/actions/setup-pandoc@v1
         with:
-          pandoc-version: '2.11.2'
+          pandoc-version: '2.11.3.2'
 
       - name: Build
         run: |
