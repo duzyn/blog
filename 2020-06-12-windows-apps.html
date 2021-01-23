@@ -249,14 +249,17 @@
 <p>还有很多其他强大的特性，不再一一列举，可以访问 <a href="https://github.com/lukesampson/scoop/wiki">Scoop Wiki</a> 了解更多。</p>
 <h3 id="安装-scoop">安装 Scoop</h3>
 <p>安装 Scoop 特别简单，只需要以 <strong>管理员身份</strong> 打开 PowerShell，运行以下命令将 Scoop 安装到电脑（默认在我的文档的 scoop 下）</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Set-ExecutionPolicy</span> -ExecutionPolicy RemoteSigned -Scope CurrentUser</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">iwr</span> -useb get.<span class="fu">scoop</span>.<span class="fu">sh</span> | <span class="fu">iex</span></span></code></pre></div>
-<p>或运行下述命令将 Scoop 安装到 C 盘：</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Set-ExecutionPolicy</span> -ExecutionPolicy RemoteSigned -Scope CurrentUser</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="va">$env</span>:SCOOP=&#39;C:\scoop&#39;</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>[Environment]::SetEnvironmentVariable(&#39;SCOOP&#39;, <span class="va">$env</span>:SCOOP, &#39;User&#39;)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">iwr</span> -useb get.<span class="fu">scoop</span>.<span class="fu">sh</span> | <span class="fu">iex</span></span></code></pre></div>
-<p>要了解 Scoop 的基本用法，输入命令 <code>scoop help</code>。</p>
+<p>官网安装脚本的原地址是：<a href="https://raw.githubusercontent.com/scoopinstaller/install/master/install.ps1" class="uri">https://raw.githubusercontent.com/scoopinstaller/install/master/install.ps1</a>，这个网站在国内打不开，改为其在 jsDelivr CDN 的地址是：<a href="https://cdn.jsdelivr.net/gh/scoopinstaller/install/install.ps1" class="uri">https://cdn.jsdelivr.net/gh/scoopinstaller/install/install.ps1</a>。</p>
+<p>在下载上述安装脚本后，使用 <code>.\install.ps1 -?</code> 查看帮助。</p>
+<p>Scoop 脚本在安装自己时需要从 GitHub 下载文件。我们将 install.ps1 中涉及 GitHub 的地址改为 cnpmjs.org 的 GitHub 代理地址。在以下两行 github.com 后加上 cnpmjs.org。</p>
+<p>改前的行：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="va">$SCOOP_PACKAGE_REPO</span> = <span class="st">&quot;https://github.com/lukesampson/scoop/archive/master.zip&quot;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="va">$SCOOP_MAIN_BUCKET_REPO</span> = <span class="st">&quot;https://github.com/ScoopInstaller/Main/archive/master.zip&quot;</span></span></code></pre></div>
+<p>改后的行：</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="va">$SCOOP_PACKAGE_REPO</span> = <span class="st">&quot;https://github.com.cnpmjs.org/lukesampson/scoop/archive/master.zip&quot;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="va">$SCOOP_MAIN_BUCKET_REPO</span> = <span class="st">&quot;https://github.com.cnpmjs.org/ScoopInstaller/Main/archive/master.zip&quot;</span></span></code></pre></div>
+<p>把 Scoop 安装在 C 盘下，运行命令：<code>.\install.ps1 -ScoopDir C:\scoop</code></p>
+<p>要了解 Scoop 的基本用法，在安装完后输入命令 <code>scoop help</code>。</p>
 <h3 id="添加常用软件源">添加常用软件源</h3>
 <p>安装 Scoop 后初始只有 main 软件源，里面都是些命令行的应用。日常用的 GUI 应用基本都在 extras 软件源中。常用软件的老版本在 versions 软件源中。JRE，JDK 在 java 软件源中。</p>
 <p>使用下述命令添加软件源：</p>
