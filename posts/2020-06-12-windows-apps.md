@@ -26,21 +26,29 @@ Scoop 的优势是：
 
 安装 Scoop 特别简单，只需要以 **管理员身份** 打开 PowerShell，运行以下命令将 Scoop 安装到电脑（默认在我的文档的 scoop 下）
 
+官网安装脚本的原地址是：<https://raw.githubusercontent.com/scoopinstaller/install/master/install.ps1>，这个网站在国内打不开，改为其在 jsDelivr CDN 的地址是：<https://cdn.jsdelivr.net/gh/scoopinstaller/install/install.ps1>。
+
+在下载上述安装脚本后，使用 `.\install.ps1 -?` 查看帮助。
+
+Scoop 脚本在安装自己时需要从 GitHub 下载文件。我们将 install.ps1 中涉及 GitHub 的地址改为 cnpmjs.org 的 GitHub 代理地址。在以下两行 github.com 后加上 cnpmjs.org。
+
+改前的行：
+
 ```powershell
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-iwr -useb get.scoop.sh | iex
+$SCOOP_PACKAGE_REPO = "https://github.com/lukesampson/scoop/archive/master.zip"
+$SCOOP_MAIN_BUCKET_REPO = "https://github.com/ScoopInstaller/Main/archive/master.zip"
 ```
 
-或运行下述命令将 Scoop 安装到 C 盘：
+改后的行：
 
 ```powershell
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-$env:SCOOP='C:\scoop'
-[Environment]::SetEnvironmentVariable('SCOOP', $env:SCOOP, 'User')
-iwr -useb get.scoop.sh | iex
+$SCOOP_PACKAGE_REPO = "https://github.com.cnpmjs.org/lukesampson/scoop/archive/master.zip"
+$SCOOP_MAIN_BUCKET_REPO = "https://github.com.cnpmjs.org/ScoopInstaller/Main/archive/master.zip"
 ```
 
-要了解 Scoop 的基本用法，输入命令 `scoop help`。
+把 Scoop 安装在 C 盘下，运行命令：`.\install.ps1 -ScoopDir C:\scoop`
+
+要了解 Scoop 的基本用法，在安装完后输入命令 `scoop help`。
 
 ## 添加常用软件源
 
